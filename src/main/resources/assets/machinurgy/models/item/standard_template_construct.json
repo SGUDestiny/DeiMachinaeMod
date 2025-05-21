@@ -1,0 +1,6 @@
+{
+	"parent": "minecraft:item/generated",
+	"textures": {
+		"layer0": "machinurgy:item/standard_template_construct"
+	}
+}

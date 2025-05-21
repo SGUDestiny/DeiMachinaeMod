@@ -1,0 +1,36 @@
+{
+  "_items": "Items",
+
+  "_materials": "Materials",
+  "item.machinurgy.archeobrass_plate": "Archeobrass Plate",
+  "item.machinurgy.archeobrass_ingot": "Archeobrass Ingot",
+  "item.machinurgy.archeobrass_nugget": "Archeobrass Nugget",
+
+  "item.machinurgy.noctilith_shard": "Noctilith Shard",
+
+  "_components": "Components",
+  "item.machinurgy.cogitator": "Cogitator",
+  "item.machinurgy.motherboard": "Motherboard",
+  "item.machinurgy.worn_gears": "Worn Gears",
+
+  "_standard_template_constructs": "Standard Template Constructs",
+  "item.machinurgy.standard_template_construct": "Standard Template Construct (STC)",
+
+  "_machine_spirit_stuff": "Machine Spirit Stuff",
+  "item.machinurgy.standard_data_vessel": "Standard Data Vessel",
+  "item.machinurgy.rudimentary_data_vessel": "Rudimentary Data Vessel",
+
+  "item.machinurgy.oil_flask": "Oil Flask",
+
+
+
+  "_blocks": "Blocks",
+
+  "_scrap_blocks": "Scrap Blocks",
+  "block.machinurgy.scrap_pile": "Scrap Pile",
+
+
+
+  "_misc": "Misc",
+  "tab.machinurgy.main": "Machinurgy"
+}

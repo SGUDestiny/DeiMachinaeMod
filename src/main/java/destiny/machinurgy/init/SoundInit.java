@@ -1,0 +1,23 @@
+package destiny.machinurgy.init;
+
+import destiny.machinurgy.MachinurgyMod;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
+
+public class SoundInit {
+    public static final DeferredRegister<SoundEvent> SOUNDS = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, MachinurgyMod.MODID);
+
+    private static RegistryObject<SoundEvent> registerSoundEvent(String sound)
+    {
+        return SOUNDS.register(sound, () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(MachinurgyMod.MODID, sound)));
+    }
+
+    public static void register(IEventBus bus)
+    {
+        SOUNDS.register(bus);
+    }
+}
