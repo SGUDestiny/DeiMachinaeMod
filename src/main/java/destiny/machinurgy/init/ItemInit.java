@@ -26,8 +26,8 @@ public class ItemInit {
     public static final RegistryObject<Item> STANDARD_TEMPLATE_CONSTRUCT = ITEMS.register("standard_template_construct", () -> new Item(new Item.Properties()));
 
     //Machine Spirit Stuff
-    public static final RegistryObject<Item> STANDARD_DATA_VESSEL = ITEMS.register("standard_data_vessel", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> RUDIMENTARY_DATA_VESSEL = ITEMS.register("rudimentary_data_vessel", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> STANDARD_DATA_VESSEL = ITEMS.register("standard_data_vessel", () -> new Item(new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> RUDIMENTARY_DATA_VESSEL = ITEMS.register("rudimentary_data_vessel", () -> new Item(new Item.Properties().stacksTo(1)));
 
     public static final RegistryObject<Item> OIL_FLASK = ITEMS.register("oil_flask", () -> new Item(new Item.Properties()));
 
