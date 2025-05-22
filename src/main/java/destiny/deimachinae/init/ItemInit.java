@@ -1,6 +1,6 @@
 package destiny.machinurgy.init;
 
-import destiny.machinurgy.MachinurgyMod;
+import destiny.machinurgy.DeiMachinaeMod;
 import destiny.machinurgy.items.OmnispexItem;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -9,7 +9,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 public class ItemInit {
-    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MachinurgyMod.MODID);
+    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, DeiMachinaeMod.MODID);
 
     //Tools
     public static final RegistryObject<Item> OMNISPEX = ITEMS.register("omnispex", () -> new OmnispexItem(new Item.Properties().stacksTo(1)));

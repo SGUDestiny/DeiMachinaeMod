@@ -11,12 +11,12 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 
-@Mod(MachinurgyMod.MODID)
-public class MachinurgyMod {
-    public static final String MODID = "machinurgy";
+@Mod(DeiMachinaeMod.MODID)
+public class DeiMachinaeMod {
+    public static final String MODID = "deimachinae";
     private static final Logger LOGGER = LogUtils.getLogger();
 
-    public MachinurgyMod(FMLJavaModLoadingContext context) {
+    public DeiMachinaeMod(FMLJavaModLoadingContext context) {
         IEventBus modEventBus = context.getModEventBus();
 
         ItemInit.register(modEventBus);
