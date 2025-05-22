@@ -1,7 +1,7 @@
-package destiny.machinurgy;
+package destiny.deimachinae;
 
 import com.mojang.logging.LogUtils;
-import destiny.machinurgy.init.*;
+import destiny.deimachinae.init.*;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;

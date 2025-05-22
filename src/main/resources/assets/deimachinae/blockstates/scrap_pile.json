@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "machinurgy:block/scrap_pile"
+      "model": "deimachinae:block/scrap_pile"
     }
   }
 }

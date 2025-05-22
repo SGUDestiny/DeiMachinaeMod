@@ -1,16 +1,30 @@
 {
   "omnispex_ping": {
-    "subtitle": "sound.machinurgy.omnispex_ping",
+    "subtitle": "sound.deimachinae.omnispex_ping",
     "sounds":
     [
-      "machinurgy:omnispex_ping"
+      "deimachinae:omnispex_ping"
     ]
   },
   "omnispex_select": {
-    "subtitle": "sound.machinurgy.omnispex_select",
+    "subtitle": "sound.deimachinae.omnispex_select",
     "sounds":
     [
-      "machinurgy:omnispex_select"
+      "deimachinae:omnispex_select"
+    ]
+  },
+  "tech_on": {
+    "subtitle": "sound.deimachinae.tech_on",
+    "sounds":
+    [
+      "deimachinae:tech_on"
+    ]
+  },
+  "tech_off": {
+    "subtitle": "sound.deimachinae.tech_off",
+    "sounds":
+    [
+      "deimachinae:tech_off"
     ]
   }
 }

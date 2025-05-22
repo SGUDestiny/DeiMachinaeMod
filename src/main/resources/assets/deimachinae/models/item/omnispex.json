@@ -1,15 +1,15 @@
 {
   "base":
   {
-    "parent": "machinurgy:item/omnispex_0"
+    "parent": "deimachinae:item/omnispex_0"
   },
   "overrides":
   [
-    { "predicate": { "machinurgy:omnispex_ping": 0.0 }, "model": "machinurgy:item/omnispex_0"},
-    { "predicate": { "machinurgy:omnispex_ping": 0.2 }, "model": "machinurgy:item/omnispex_1"},
-    { "predicate": { "machinurgy:omnispex_ping": 0.4 }, "model": "machinurgy:item/omnispex_2"},
-    { "predicate": { "machinurgy:omnispex_ping": 0.6 }, "model": "machinurgy:item/omnispex_3"},
-    { "predicate": { "machinurgy:omnispex_ping": 0.8 }, "model": "machinurgy:item/omnispex_4"},
-    { "predicate": { "machinurgy:omnispex_ping": 1.0 }, "model": "machinurgy:item/omnispex_5"}
+    { "predicate": { "deimachinae:omnispex_ping": 0.0 }, "model": "deimachinae:item/omnispex_0"},
+    { "predicate": { "deimachinae:omnispex_ping": 0.2 }, "model": "deimachinae:item/omnispex_1"},
+    { "predicate": { "deimachinae:omnispex_ping": 0.4 }, "model": "deimachinae:item/omnispex_2"},
+    { "predicate": { "deimachinae:omnispex_ping": 0.6 }, "model": "deimachinae:item/omnispex_3"},
+    { "predicate": { "deimachinae:omnispex_ping": 0.8 }, "model": "deimachinae:item/omnispex_4"},
+    { "predicate": { "deimachinae:omnispex_ping": 1.0 }, "model": "deimachinae:item/omnispex_5"}
   ]
 }

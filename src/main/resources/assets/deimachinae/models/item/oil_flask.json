@@ -1,6 +1,6 @@
 {
 	"parent": "minecraft:item/generated",
 	"textures": {
-		"layer0": "machinurgy:item/oil_flask"
+		"layer0": "deimachinae:item/oil_flask"
 	}
 }

@@ -1,6 +1,6 @@
-package destiny.machinurgy.init;
+package destiny.deimachinae.init;
 
-import destiny.machinurgy.DeiMachinaeMod;
+import destiny.deimachinae.DeiMachinaeMod;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
@@ -14,7 +14,7 @@ public class ItemTabInit {
     public static final RegistryObject<CreativeModeTab> MAIN = TABS.register("main",
             () -> CreativeModeTab.builder()
                     .icon(() -> ItemInit.STANDARD_DATA_VESSEL.get().getDefaultInstance())
-                    .title(Component.translatable("tab.machinurgy.main"))
+                    .title(Component.translatable("tab.deimachinae.main"))
                     .displayItems(((itemDisplayParameters, output) -> {
                         //Items
 

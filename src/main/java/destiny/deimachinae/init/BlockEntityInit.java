@@ -1,6 +1,6 @@
-package destiny.machinurgy.init;
+package destiny.deimachinae.init;
 
-import destiny.machinurgy.DeiMachinaeMod;
+import destiny.deimachinae.DeiMachinaeMod;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;

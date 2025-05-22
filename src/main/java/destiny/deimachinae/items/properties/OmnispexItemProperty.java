@@ -1,4 +1,4 @@
-package destiny.machinurgy.items.properties;
+package destiny.deimachinae.items.properties;
 
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.item.ClampedItemPropertyFunction;
@@ -8,7 +8,7 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
 
-import static destiny.machinurgy.items.OmnispexItem.ANIMATION_FRAME;
+import static destiny.deimachinae.items.OmnispexItem.ANIMATION_FRAME;
 
 public class OmnispexItemProperty implements ClampedItemPropertyFunction {
     @Override

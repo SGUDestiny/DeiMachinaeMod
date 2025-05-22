@@ -1,4 +1,4 @@
-package destiny.machinurgy.util;
+package destiny.deimachinae.util;
 
 import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.Shapes;

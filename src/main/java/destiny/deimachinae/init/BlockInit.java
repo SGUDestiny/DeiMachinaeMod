@@ -1,6 +1,6 @@
-package destiny.machinurgy.init;
+package destiny.deimachinae.init;
 
-import destiny.machinurgy.DeiMachinaeMod;
+import destiny.deimachinae.DeiMachinaeMod;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;

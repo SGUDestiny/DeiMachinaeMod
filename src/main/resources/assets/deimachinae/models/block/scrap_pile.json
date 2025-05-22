@@ -2,9 +2,9 @@
 	"parent": "minecraft:block/block",
 	"render_type": "minecraft:cutout",
 	"textures": {
-		"0": "machinurgy:block/scrap_pile_outer",
-		"1": "machinurgy:block/scrap_pile_inner",
-		"particle": "machinurgy:block/scrap_pile"
+		"0": "deimachinae:block/scrap_pile_outer",
+		"1": "deimachinae:block/scrap_pile_inner",
+		"particle": "deimachinae:block/scrap_pile"
 	},
 	"elements": [
 		{

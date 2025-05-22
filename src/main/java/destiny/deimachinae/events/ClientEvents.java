@@ -1,7 +1,7 @@
-package destiny.machinurgy.events;
+package destiny.deimachinae.events;
 
-import destiny.machinurgy.init.ItemInit;
-import destiny.machinurgy.items.properties.OmnispexItemProperty;
+import destiny.deimachinae.init.ItemInit;
+import destiny.deimachinae.items.properties.OmnispexItemProperty;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTabs;
@@ -12,7 +12,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 
-import static destiny.machinurgy.DeiMachinaeMod.MODID;
+import static destiny.deimachinae.DeiMachinaeMod.MODID;
 
 @Mod.EventBusSubscriber(modid = MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class ClientEvents {

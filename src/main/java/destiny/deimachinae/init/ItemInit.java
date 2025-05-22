@@ -1,7 +1,7 @@
-package destiny.machinurgy.init;
+package destiny.deimachinae.init;
 
-import destiny.machinurgy.DeiMachinaeMod;
-import destiny.machinurgy.items.OmnispexItem;
+import destiny.deimachinae.DeiMachinaeMod;
+import destiny.deimachinae.items.OmnispexItem;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;

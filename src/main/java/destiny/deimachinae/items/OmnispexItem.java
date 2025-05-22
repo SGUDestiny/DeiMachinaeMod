@@ -1,10 +1,9 @@
-package destiny.machinurgy.items;
+package destiny.deimachinae.items;
 
-import destiny.machinurgy.init.SoundInit;
+import destiny.deimachinae.init.SoundInit;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.nbt.NbtUtils;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
@@ -55,10 +54,10 @@ public class OmnispexItem extends Item {
             stack.getTag().putBoolean(POWER, power);
 
             if (power) {
-                pLevel.playSound(null, pPlayer.getOnPos().above(), SoundEvents.STONE_BUTTON_CLICK_ON, SoundSource.PLAYERS);
+                pLevel.playSound(null, pPlayer.getOnPos().above(), SoundInit.TECH_ON.get(), SoundSource.PLAYERS);
                 pPlayer.displayClientMessage(Component.literal("Device activated"), true);
             } else {
-                pLevel.playSound(null, pPlayer.getOnPos().above(), SoundEvents.STONE_BUTTON_CLICK_OFF, SoundSource.PLAYERS);
+                pLevel.playSound(null, pPlayer.getOnPos().above(), SoundInit.TECH_OFF.get(), SoundSource.PLAYERS);
                 pPlayer.displayClientMessage(Component.literal("Device deactivated"), true);
             }
 

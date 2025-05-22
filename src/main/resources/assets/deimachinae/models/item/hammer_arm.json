@@ -1,6 +1,6 @@
 {
 	"parent": "minecraft:item/generated",
 	"textures": {
-		"layer0": "machinurgy:item/hammer_arm"
+		"layer0": "deimachinae:item/hammer_arm"
 	}
 }
