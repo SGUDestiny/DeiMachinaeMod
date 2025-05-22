@@ -1,6 +1,7 @@
 package destiny.machinurgy.init;
 
 import destiny.machinurgy.MachinurgyMod;
+import destiny.machinurgy.items.OmnispexItem;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -9,6 +10,9 @@ import net.minecraftforge.registries.RegistryObject;
 
 public class ItemInit {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MachinurgyMod.MODID);
+
+    //Tools
+    public static final RegistryObject<Item> OMNISPEX = ITEMS.register("omnispex", () -> new OmnispexItem(new Item.Properties().stacksTo(1)));
 
     //Materials
     public static final RegistryObject<Item> ARCHEOBRASS_PLATE = ITEMS.register("archeobrass_plate", () -> new Item(new Item.Properties()));
@@ -21,6 +25,8 @@ public class ItemInit {
     public static final RegistryObject<Item> COGITATOR = ITEMS.register("cogitator", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> MOTHERBOARD = ITEMS.register("motherboard", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> WORN_GEARS = ITEMS.register("worn_gears", () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> HAMMER_ARM = ITEMS.register("hammer_arm", () -> new Item(new Item.Properties().stacksTo(1)));
 
     //Standard Template Constructs
     public static final RegistryObject<Item> STANDARD_TEMPLATE_CONSTRUCT = ITEMS.register("standard_template_construct", () -> new Item(new Item.Properties()));

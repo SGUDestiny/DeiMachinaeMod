@@ -18,6 +18,9 @@ public class ItemTabInit {
                     .displayItems(((itemDisplayParameters, output) -> {
                         //Items
 
+                        //Tools
+                        output.accept(ItemInit.OMNISPEX.get());
+
                         //Materials
                         output.accept(ItemInit.ARCHEOBRASS_PLATE.get());
                         output.accept(ItemInit.ARCHEOBRASS_INGOT.get());
@@ -29,6 +32,8 @@ public class ItemTabInit {
                         output.accept(ItemInit.COGITATOR.get());
                         output.accept(ItemInit.MOTHERBOARD.get());
                         output.accept(ItemInit.WORN_GEARS.get());
+
+                        output.accept(ItemInit.HAMMER_ARM.get());
 
                         //Standard Template Constructs
                         output.accept(ItemInit.STANDARD_TEMPLATE_CONSTRUCT.get());

@@ -1,6 +1,9 @@
 {
   "_items": "Items",
 
+  "_tools": "Tools",
+  "item.machinurgy.omnispex": "Omnispex",
+
   "_materials": "Materials",
   "item.machinurgy.archeobrass_plate": "Archeobrass Plate",
   "item.machinurgy.archeobrass_ingot": "Archeobrass Ingot",
@@ -13,6 +16,8 @@
   "item.machinurgy.motherboard": "Motherboard",
   "item.machinurgy.worn_gears": "Worn Gears",
 
+  "item.machinurgy.hammer_arm": "Hammer Arm",
+
   "_standard_template_constructs": "Standard Template Constructs",
   "item.machinurgy.standard_template_construct": "Standard Template Construct (STC)",
 
@@ -21,8 +26,6 @@
   "item.machinurgy.rudimentary_data_vessel": "Rudimentary Data Vessel",
 
   "item.machinurgy.oil_flask": "Oil Flask",
-
-
 
   "_blocks": "Blocks",
 
