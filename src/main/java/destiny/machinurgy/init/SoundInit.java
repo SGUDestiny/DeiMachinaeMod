@@ -11,6 +11,9 @@ import net.minecraftforge.registries.RegistryObject;
 public class SoundInit {
     public static final DeferredRegister<SoundEvent> SOUNDS = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, MachinurgyMod.MODID);
 
+    public static RegistryObject<SoundEvent> OMNISPEX_PING = registerSoundEvent("omnispex_ping");
+    public static RegistryObject<SoundEvent> OMNISPEX_SELECT = registerSoundEvent("omnispex_select");
+
     private static RegistryObject<SoundEvent> registerSoundEvent(String sound)
     {
         return SOUNDS.register(sound, () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(MachinurgyMod.MODID, sound)));

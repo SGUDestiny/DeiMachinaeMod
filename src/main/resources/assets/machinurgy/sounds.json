@@ -1,3 +1,16 @@
 {
-
+  "omnispex_ping": {
+    "subtitle": "sound.machinurgy.omnispex_ping",
+    "sounds":
+    [
+      "machinurgy:omnispex_ping"
+    ]
+  },
+  "omnispex_select": {
+    "subtitle": "sound.machinurgy.omnispex_select",
+    "sounds":
+    [
+      "machinurgy:omnispex_select"
+    ]
+  }
 }
