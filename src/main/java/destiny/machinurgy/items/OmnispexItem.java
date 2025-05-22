@@ -167,7 +167,9 @@ public class OmnispexItem extends Item {
 
         stack.getTag().putDouble(DISTANCE, foundBlocks.isEmpty() ? 0 : foundBlocks.get(0).getCenter().distanceTo(startPos.getCenter()));
 
-        createPing(stack, level, startPos);
+        if (stack.getTag().getInt(DISTANCE) != 0) {
+            createPing(stack, level, startPos);
+        }
     }
 
     //This is a fucking clusterfuck man
