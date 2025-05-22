@@ -1,10 +1,12 @@
 package destiny.machinurgy.items;
 
 import destiny.machinurgy.init.SoundInit;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.NbtUtils;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
@@ -16,11 +18,13 @@ import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -100,7 +104,7 @@ public class OmnispexItem extends Item {
     private void createPing(ItemStack stack, Level level, BlockPos pos) {
         if (level instanceof ServerLevel) {
             double distance = stack.getTag().getDouble(DISTANCE);
-            float pitch = distance == 0 ? 1.0f : Mth.lerp(1.0f - ((float) distance / 32f), 0.5f, 1.5f);
+            float pitch = distance == 0 ? 1.0f : Mth.lerp(1.0f - ((float) distance / 32f), 0.2f, 2.0f);
 
             level.playSound(null, pos, SoundInit.OMNISPEX_PING.get(), SoundSource.PLAYERS, 1, pitch);
 
@@ -112,6 +116,16 @@ public class OmnispexItem extends Item {
     @Override
     public boolean shouldCauseReequipAnimation(ItemStack oldStack, ItemStack newStack, boolean slotChanged) {
         return false;
+    }
+
+    @Override
+    public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
+        if (pStack.getTag() != null) {
+            String selected_block = pStack.getTag().getString(SELECTED_BLOCK);
+
+            MutableComponent block = Component.literal("Selected block: " + selected_block).withStyle(ChatFormatting.GRAY);
+            pTooltipComponents.add(block);
+        }
     }
 
     @Override
@@ -128,9 +142,18 @@ public class OmnispexItem extends Item {
     public void searchTicker(ItemStack stack, Level level, Player player) {
         if (level instanceof ServerLevel) {
             double distance = stack.getTag().getDouble(DISTANCE);
-            if (distance != 0) {
+            if (distance == 0) {
+                if (searchTicker >= 60) {
+                    BlockPos startPos = BlockPos.containing(player.getX(), player.getY(), player.getZ());
+                    AABB searchArea = new AABB(startPos).inflate(16);
+
+                    iterateBlocks(stack, level, startPos, searchArea);
+                    searchTicker = 0;
+                } else {
+                    searchTicker++;
+                }
+            } else {
                 if (searchTicker >= Mth.lerp(1.0 - (distance / 32f), 60, 5)) {
-                    System.out.println("lerp:" + Mth.lerp(1.0 - (distance / 32f), 60, 5));
                     BlockPos startPos = BlockPos.containing(player.getX(), player.getY(), player.getZ());
                     AABB searchArea = new AABB(startPos).inflate(16);
 
