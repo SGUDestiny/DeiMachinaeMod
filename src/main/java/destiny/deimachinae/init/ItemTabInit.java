@@ -11,18 +11,48 @@ import net.minecraftforge.registries.RegistryObject;
 public class ItemTabInit {
     public static final DeferredRegister<CreativeModeTab> TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, DeiMachinaeMod.MODID);
 
-    public static final RegistryObject<CreativeModeTab> MAIN = TABS.register("main",
+    public static final RegistryObject<CreativeModeTab> TECHNOLOGY = TABS.register("technology",
             () -> CreativeModeTab.builder()
-                    .icon(() -> ItemInit.STANDARD_DATA_VESSEL.get().getDefaultInstance())
-                    .title(Component.translatable("tab.deimachinae.main"))
+                    .icon(() -> ItemInit.OMNISPEX.get().getDefaultInstance())
+                    .title(Component.translatable("tab.deimachinae.technology"))
                     .displayItems(((itemDisplayParameters, output) -> {
-                        //Items
-
                         //Tools
                         output.accept(ItemInit.OMNISPEX.get());
 
+                        //Components
+                        output.accept(ItemInit.HAMMER_ARM.get());
+
+                        //STCs
+                        output.accept(ItemInit.STANDARD_TEMPLATE_CONSTRUCT.get());
+
+                        output.accept(BlockInit.ANCIENT_CRYPT.get());
+                    })).build());
+
+    public static final RegistryObject<CreativeModeTab> SPIRITUALISM = TABS.register("spiritualism",
+            () -> CreativeModeTab.builder()
+                    .icon(() -> ItemInit.STANDARD_DATA_VESSEL.get().getDefaultInstance())
+                    .title(Component.translatable("tab.deimachinae.spiritualism"))
+                    .withTabsBefore(TECHNOLOGY.getKey())
+                    .displayItems(((itemDisplayParameters, output) -> {
+                        //Data Vessels
+                        output.accept(ItemInit.RUDIMENTARY_DATA_VESSEL.get());
+                        output.accept(ItemInit.STANDARD_DATA_VESSEL.get());
+
+                        //Materials
+                        output.accept(ItemInit.OIL_FLASK.get());
+                    })).build());
+
+    public static final RegistryObject<CreativeModeTab> MATERIALS = TABS.register("materials",
+            () -> CreativeModeTab.builder()
+                    .icon(() -> ItemInit.NOCTILITH_SHARD.get().getDefaultInstance())
+                    .title(Component.translatable("tab.deimachinae.materials"))
+                    .withTabsBefore(SPIRITUALISM.getKey())
+                    .displayItems(((itemDisplayParameters, output) -> {
                         //Materials
                         output.accept(ItemInit.ARCHEOBRASS_PLATE.get());
+                        output.accept(ItemInit.IRON_PLATE.get());
+                        output.accept(ItemInit.COPPER_PLATE.get());
+
                         output.accept(ItemInit.ARCHEOBRASS_INGOT.get());
                         output.accept(ItemInit.ARCHEOBRASS_NUGGET.get());
 
@@ -33,22 +63,9 @@ public class ItemTabInit {
                         output.accept(ItemInit.MOTHERBOARD.get());
                         output.accept(ItemInit.WORN_GEARS.get());
 
-                        output.accept(ItemInit.HAMMER_ARM.get());
-
-                        //Standard Template Constructs
-                        output.accept(ItemInit.STANDARD_TEMPLATE_CONSTRUCT.get());
-
-                        //Machine Spirit Stuff
-                        output.accept(ItemInit.STANDARD_DATA_VESSEL.get());
-                        output.accept(ItemInit.RUDIMENTARY_DATA_VESSEL.get());
-
-                        output.accept(ItemInit.OIL_FLASK.get());
-
-
-
                         //Blocks
-
-                        //Scrap Blocks
+                        output.accept(BlockInit.ARCHEOBRASS_BLOCK.get());
+                        output.accept(BlockInit.NOCTILITH_ORE.get());
                         output.accept(BlockInit.SCRAP_PILE.get());
                     })).build());
 

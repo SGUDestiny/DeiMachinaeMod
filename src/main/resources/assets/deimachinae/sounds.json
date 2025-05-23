@@ -26,5 +26,12 @@
     [
       "deimachinae:tech_off"
     ]
+  },
+  "ancient_crypt_open": {
+    "subtitle": "sound.deimachinae.ancient_crypt_open",
+    "sounds":
+    [
+      "deimachinae:ancient_crypt_open"
+    ]
   }
 }

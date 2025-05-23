@@ -8,7 +8,6 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
@@ -34,7 +33,7 @@ public class OmnispexItem extends Item {
     public static final String ANIMATION_FRAME = "animation_frame";
     public static final String DISTANCE = "distance";
     public static final String SELECTED_BLOCK = "selected_block";
-    private int ticker = 0;
+    private int animationTicker = 0;
     private int searchTicker = 0;
 
     public OmnispexItem(Properties pProperties) {
@@ -50,7 +49,6 @@ public class OmnispexItem extends Item {
         //If not crouching, switch on state
         if (!pPlayer.isCrouching()) {
             boolean power = !stack.getTag().getBoolean(POWER);
-
             stack.getTag().putBoolean(POWER, power);
 
             if (power) {
@@ -108,7 +106,7 @@ public class OmnispexItem extends Item {
             level.playSound(null, pos, SoundInit.OMNISPEX_PING.get(), SoundSource.PLAYERS, 1, pitch);
 
             stack.getTag().putInt(ANIMATION_FRAME, 1);
-            ticker = 1;
+            animationTicker = 1;
         }
     }
 
@@ -131,14 +129,14 @@ public class OmnispexItem extends Item {
     public void onInventoryTick(ItemStack stack, Level level, Player player, int slotIndex, int selectedIndex) {
         if (stack.getTag() != null) {
             if (stack.getTag().getBoolean(POWER)) {
-                searchTicker(stack, level, player);
+                searchManager(stack, level, player);
             }
 
             animationTicker(stack, player, level);
         }
     }
 
-    public void searchTicker(ItemStack stack, Level level, Player player) {
+    public void searchManager(ItemStack stack, Level level, Player player) {
         if (level instanceof ServerLevel) {
             double distance = stack.getTag().getDouble(DISTANCE);
             if (distance == 0) {
@@ -146,17 +144,17 @@ public class OmnispexItem extends Item {
                     BlockPos startPos = BlockPos.containing(player.getX(), player.getY(), player.getZ());
                     AABB searchArea = new AABB(startPos).inflate(16);
 
-                    iterateBlocks(stack, level, startPos, searchArea);
+                    searchTargetBlock(stack, level, startPos, searchArea);
                     searchTicker = 0;
                 } else {
                     searchTicker++;
                 }
             } else {
-                if (searchTicker >= Mth.lerp(1.0 - (distance / 32f), 60, 5)) {
+                if (searchTicker >= Mth.lerp(1.0 - (distance / 32f), 60, 3)) {
                     BlockPos startPos = BlockPos.containing(player.getX(), player.getY(), player.getZ());
                     AABB searchArea = new AABB(startPos).inflate(16);
 
-                    iterateBlocks(stack, level, startPos, searchArea);
+                    searchTargetBlock(stack, level, startPos, searchArea);
                     searchTicker = 0;
                 } else {
                     searchTicker++;
@@ -165,7 +163,7 @@ public class OmnispexItem extends Item {
         }
     }
 
-    public void iterateBlocks(ItemStack stack, Level level, BlockPos startPos, AABB searchArea) {
+    public void searchTargetBlock(ItemStack stack, Level level, BlockPos startPos, AABB searchArea) {
         Block selectedBlock = BuiltInRegistries.BLOCK.get(ResourceLocation.parse(stack.getTag().getString(SELECTED_BLOCK)));
         BlockPos minPos = new BlockPos(
                 Mth.floor(searchArea.minX),
@@ -199,15 +197,15 @@ public class OmnispexItem extends Item {
         if (level instanceof ServerLevel) {
             int frame = pStack.getTag().getInt(ANIMATION_FRAME);
 
-            if (ticker != 0) {
+            if (animationTicker != 0) {
                 if (frame == 6) {
-                    ticker = 0;
+                    animationTicker = 0;
                     frame = 0;
                 } else {
-                    if (ticker % 2 == 0) {
+                    if (animationTicker % 2 == 0) {
                         frame++;
                     }
-                    ticker++;
+                    animationTicker++;
                 }
 
                 pStack.getTag().putInt(ANIMATION_FRAME, frame);

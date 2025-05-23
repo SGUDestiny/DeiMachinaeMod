@@ -11,7 +11,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "fabricated:fabricator"
+          "name": "deimachinae:scrap_pile"
         }
       ],
       "rolls": 1

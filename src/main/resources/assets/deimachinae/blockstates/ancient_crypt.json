@@ -1,0 +1,34 @@
+{
+  "variants": {
+    "facing=east,open=false": {
+      "model": "deimachinae:block/ancient_crypt",
+      "y": 90
+    },
+    "facing=east,open=true": {
+      "model": "deimachinae:block/ancient_crypt_open",
+      "y": 90
+    },
+    "facing=north,open=false": {
+      "model": "deimachinae:block/ancient_crypt"
+    },
+    "facing=north,open=true": {
+      "model": "deimachinae:block/ancient_crypt_open"
+    },
+    "facing=south,open=false": {
+      "model": "deimachinae:block/ancient_crypt",
+      "y": 180
+    },
+    "facing=south,open=true": {
+      "model": "deimachinae:block/ancient_crypt_open",
+      "y": 180
+    },
+    "facing=west,open=false": {
+      "model": "deimachinae:block/ancient_crypt",
+      "y": 270
+    },
+    "facing=west,open=true": {
+      "model": "deimachinae:block/ancient_crypt_open",
+      "y": 270
+    }
+  }
+}

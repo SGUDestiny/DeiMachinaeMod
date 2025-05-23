@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "deimachinae:archeobrass_ingot"
+    }
+  ],
+  "result": {
+    "item": "deimachinae:archeobrass_nugget",
+    "count": 9
+  },
+  "show_notification": true
+}

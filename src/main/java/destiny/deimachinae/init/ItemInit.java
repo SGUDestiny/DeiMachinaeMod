@@ -16,6 +16,9 @@ public class ItemInit {
 
     //Materials
     public static final RegistryObject<Item> ARCHEOBRASS_PLATE = ITEMS.register("archeobrass_plate", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> IRON_PLATE = ITEMS.register("iron_plate", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> COPPER_PLATE = ITEMS.register("copper_plate", () -> new Item(new Item.Properties()));
+
     public static final RegistryObject<Item> ARCHEOBRASS_INGOT = ITEMS.register("archeobrass_ingot", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> ARCHEOBRASS_NUGGET = ITEMS.register("archeobrass_nugget", () -> new Item(new Item.Properties()));
 

@@ -6,6 +6,9 @@
 
   "_materials": "Materials",
   "item.deimachinae.archeobrass_plate": "Archeobrass Plate",
+  "item.deimachinae.iron_plate": "Iron Plate",
+  "item.deimachinae.copper_plate": "Copper Plate",
+
   "item.deimachinae.archeobrass_ingot": "Archeobrass Ingot",
   "item.deimachinae.archeobrass_nugget": "Archeobrass Nugget",
 
@@ -22,18 +25,22 @@
   "item.deimachinae.standard_template_construct": "Standard Template Construct (STC)",
 
   "_machine_spirit_stuff": "Machine Spirit Stuff",
-  "item.deimachinae.standard_data_vessel": "Standard Data Vessel",
-  "item.deimachinae.rudimentary_data_vessel": "Rudimentary Data Vessel",
+  "item.deimachinae.standard_data_vessel": "Standard Data-Vessel",
+  "item.deimachinae.rudimentary_data_vessel": "Rudimentary Data-Vessel",
 
   "item.deimachinae.oil_flask": "Oil Flask",
 
   "_blocks": "Blocks",
+  "block.deimachinae.archeobrass_block": "Archeobrass Block",
+  "block.deimachinae.ancient_crypt": "Ancient Crypt",
 
-  "_scrap_blocks": "Scrap Blocks",
+  "block.deimachinae.noctilith_ore": "Noctilith Ore",
   "block.deimachinae.scrap_pile": "Scrap Pile",
 
 
 
   "_misc": "Misc",
-  "tab.deimachinae.main": "Dei Machinae"
+  "tab.deimachinae.technology": "Sacred Technology",
+  "tab.deimachinae.spiritualism": "Machine Spiritualism",
+  "tab.deimachinae.materials": "Olden Materials"
 }

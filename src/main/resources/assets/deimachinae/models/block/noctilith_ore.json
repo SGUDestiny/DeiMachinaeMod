@@ -1,0 +1,6 @@
+{
+	"parent": "minecraft:block/cube_all",
+	"textures": {
+		"all": "deimachinae:block/noctilith_ore"
+	}
+}
