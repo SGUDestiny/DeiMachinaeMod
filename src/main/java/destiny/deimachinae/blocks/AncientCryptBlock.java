@@ -1,9 +1,12 @@
 package destiny.deimachinae.blocks;
 
+import destiny.deimachinae.DeiMachinaeMod;
 import destiny.deimachinae.init.ItemInit;
 import destiny.deimachinae.init.SoundInit;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
@@ -23,6 +26,11 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
+import net.minecraft.world.level.storage.loot.LootParams;
+import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParam;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -37,6 +45,8 @@ public class AncientCryptBlock extends Block {
     public static final BooleanProperty OPEN = BlockStateProperties.OPEN;
     public static final IntegerProperty ITEMS = IntegerProperty.create("items", 0, 4);
     public static final IntegerProperty ATTEMPTS = IntegerProperty.create("attempts", 0, 5);
+
+    public static final ResourceLocation LOOT_TABLE = new ResourceLocation(DeiMachinaeMod.MODID, "gameplay/ancient_crypt_loot");
 
     public AncientCryptBlock(Properties pProperties) {
         super(pProperties);
@@ -99,20 +109,12 @@ public class AncientCryptBlock extends Block {
 
             System.out.println("Stack empty:" + stack.isEmpty());
 
-            List<ItemStack> allItems = new ArrayList<>();
-            allItems.add(new ItemStack(ItemInit.COGITATOR.get(), pLevel.random.nextInt(1, 2)));
-            allItems.add(new ItemStack(ItemInit.MOTHERBOARD.get(), pLevel.random.nextInt(1, 2)));
-            allItems.add(new ItemStack(ItemInit.WORN_GEARS.get(), pLevel.random.nextInt(1, 3)));
-            allItems.add(new ItemStack(ItemInit.ARCHEOBRASS_PLATE.get(), pLevel.random.nextInt(1, 3)));
-            allItems.add(new ItemStack(ItemInit.ARCHEOBRASS_NUGGET.get(), pLevel.random.nextInt(1, 5)));
-            allItems.add(new ItemStack(ItemInit.OIL_FLASK.get(), 1));
-            allItems.add(new ItemStack(Items.IRON_INGOT, pLevel.random.nextInt(1, 3)));
-            allItems.add(new ItemStack(Items.IRON_NUGGET, pLevel.random.nextInt(1, 5)));
-            allItems.add(new ItemStack(Items.COPPER_INGOT, pLevel.random.nextInt(1, 5)));
-            allItems.add(new ItemStack(Items.REDSTONE, pLevel.random.nextInt(1, 5)));
-
             if (!pLevel.isClientSide()) {
-                ItemEntity item = new ItemEntity(pLevel, spawnPos.x, spawnPos.y + 0.5, spawnPos.z, allItems.get(pLevel.random.nextInt(0, allItems.size())));
+                LootTable lootTable = pLevel.getServer().getLootData().getLootTable(LOOT_TABLE);
+
+                List<ItemStack> itemList = lootTable.getRandomItems((new LootParams.Builder((ServerLevel) pLevel)).withParameter(LootContextParams.BLOCK_STATE, pState).create(LootContextParamSets.PIGLIN_BARTER));
+
+                ItemEntity item = new ItemEntity(pLevel, spawnPos.x, spawnPos.y + 0.5, spawnPos.z, itemList.get(pLevel.random.nextInt(0, itemList.size())));
                 item.setDeltaMovement(pLevel.random.triangle(0.0F, 0.11485000171139836), pLevel.random.triangle(0.2, 0.11485000171139836), pLevel.random.triangle(0.0F, 0.11485000171139836));
                 pLevel.addFreshEntity(item);
                 pLevel.playSound(null, pPos, SoundEvents.ITEM_FRAME_ADD_ITEM, SoundSource.BLOCKS, 1.0f, 0.8f);
