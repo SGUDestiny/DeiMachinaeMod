@@ -19,7 +19,7 @@ import java.util.function.Supplier;
 public class BlockInit {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, DeiMachinaeMod.MODID);
 
-    public static final RegistryObject<Block> ANCIENT_CRYPT = registerBlock("ancient_crypt", () -> new AncientCryptBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_YELLOW).strength(5.0F).sound(SoundType.COPPER).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> ANCIENT_CRYPT = BLOCKS.register("ancient_crypt", () -> new AncientCryptBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_YELLOW).strength(5.0F).sound(SoundType.COPPER).requiresCorrectToolForDrops()));
 
     public static final RegistryObject<Block> ARCHEOBRASS_BLOCK = registerBlock("archeobrass_block", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_YELLOW).strength(3.0F).sound(SoundType.COPPER).requiresCorrectToolForDrops()));
     public static final RegistryObject<Block> SCRAP_PILE = registerBlock("scrap_pile", () -> new FallingBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_YELLOW).strength(4.0F).sound(SoundType.ANCIENT_DEBRIS).requiresCorrectToolForDrops().noOcclusion()));

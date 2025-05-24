@@ -1,6 +1,7 @@
 package destiny.deimachinae.init;
 
 import destiny.deimachinae.DeiMachinaeMod;
+import destiny.deimachinae.items.AncientCryptBlockItem;
 import destiny.deimachinae.items.OmnispexItem;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -39,6 +40,8 @@ public class ItemInit {
     public static final RegistryObject<Item> RUDIMENTARY_DATA_VESSEL = ITEMS.register("rudimentary_data_vessel", () -> new Item(new Item.Properties().stacksTo(1)));
 
     public static final RegistryObject<Item> OIL_FLASK = ITEMS.register("oil_flask", () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> ANCIENT_CRYPT = ITEMS.register("ancient_crypt", () -> new AncientCryptBlockItem(new Item.Properties()));
 
     public static void register(IEventBus bus) {
         ITEMS.register(bus);

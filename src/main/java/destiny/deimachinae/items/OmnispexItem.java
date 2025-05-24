@@ -35,6 +35,7 @@ public class OmnispexItem extends Item {
     public static final String SELECTED_BLOCK = "selected_block";
     private int animationTicker = 0;
     private int searchTicker = 0;
+    private int maxDistance = 64;
 
     public OmnispexItem(Properties pProperties) {
         super(pProperties);
@@ -101,7 +102,7 @@ public class OmnispexItem extends Item {
     private void createPing(ItemStack stack, Level level, BlockPos pos) {
         if (level instanceof ServerLevel) {
             double distance = stack.getTag().getDouble(DISTANCE);
-            float pitch = distance == 0 ? 1.0f : Mth.lerp(1.0f - ((float) distance / 32f), 0.2f, 2.0f);
+            float pitch = distance == 0 ? 1.0f : Mth.lerp(1.0f - ((float) distance / maxDistance), 0.2f, 2.0f);
 
             level.playSound(null, pos, SoundInit.OMNISPEX_PING.get(), SoundSource.PLAYERS, 1, pitch);
 
@@ -142,7 +143,7 @@ public class OmnispexItem extends Item {
             if (distance == 0) {
                 if (searchTicker >= 60) {
                     BlockPos startPos = BlockPos.containing(player.getX(), player.getY(), player.getZ());
-                    AABB searchArea = new AABB(startPos).inflate(16);
+                    AABB searchArea = new AABB(startPos).inflate(maxDistance / 2f);
 
                     searchTargetBlock(stack, level, startPos, searchArea);
                     searchTicker = 0;
@@ -150,9 +151,9 @@ public class OmnispexItem extends Item {
                     searchTicker++;
                 }
             } else {
-                if (searchTicker >= Mth.lerp(1.0 - (distance / 32f), 60, 3)) {
+                if (searchTicker >= Mth.lerp(1.0 - (distance / maxDistance), 60, 3)) {
                     BlockPos startPos = BlockPos.containing(player.getX(), player.getY(), player.getZ());
-                    AABB searchArea = new AABB(startPos).inflate(16);
+                    AABB searchArea = new AABB(startPos).inflate(maxDistance / 2f);
 
                     searchTargetBlock(stack, level, startPos, searchArea);
                     searchTicker = 0;

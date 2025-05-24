@@ -13,12 +13,14 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.PickaxeItem;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -43,7 +45,7 @@ import java.util.List;
 public class AncientCryptBlock extends Block {
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static final BooleanProperty OPEN = BlockStateProperties.OPEN;
-    public static final IntegerProperty ITEMS = IntegerProperty.create("items", 0, 4);
+    public static final IntegerProperty ITEMS = IntegerProperty.create("items", 0, 6);
     public static final IntegerProperty ATTEMPTS = IntegerProperty.create("attempts", 0, 5);
 
     public static final ResourceLocation LOOT_TABLE = new ResourceLocation(DeiMachinaeMod.MODID, "gameplay/ancient_crypt_loot");
@@ -71,6 +73,21 @@ public class AncientCryptBlock extends Block {
     }
 
     @Override
+    public void playerWillDestroy(Level pLevel, BlockPos pPos, BlockState pState, Player pPlayer) {
+        if (!pPlayer.isCreative()) {
+            ItemStack itemStack = new ItemStack(ItemInit.ANCIENT_CRYPT.get());
+
+            itemStack.getOrCreateTag().putInt(ITEMS.getName(), pState.getValue(ITEMS));
+            itemStack.getOrCreateTag().putBoolean(OPEN.getName(), pState.getValue(OPEN));
+
+            ItemEntity itementity = new ItemEntity(pLevel, (double) pPos.getX() + 0.5D, (double) pPos.getY() + 0.5D, (double) pPos.getZ() + 0.5D, itemStack);
+            itementity.setDefaultPickUpDelay();
+            pLevel.addFreshEntity(itementity);
+        }
+        super.playerWillDestroy(pLevel, pPos, pState, pPlayer);
+    }
+
+    @Override
     public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
         ItemStack stack = pPlayer.getItemInHand(pHand);
 
@@ -86,7 +103,7 @@ public class AncientCryptBlock extends Block {
                 if (attempts < 4) {
                     if (pLevel.random.nextDouble() > 0.75) {
                         if (!pLevel.isClientSide()) {
-                            pLevel.setBlock(pPos, pState.setValue(OPEN, true).setValue(ITEMS, pLevel.random.nextInt(3, 5)), 2);
+                            pLevel.setBlock(pPos, pState.setValue(OPEN, true).setValue(ITEMS, pLevel.random.nextInt(3, 6)), 2);
                         }
                         pLevel.playSound(null, pPos, SoundInit.ANCIENT_CRYPT_OPEN.get(), SoundSource.BLOCKS);
                     } else {
@@ -97,7 +114,7 @@ public class AncientCryptBlock extends Block {
                     }
                 } else {
                     if (!pLevel.isClientSide()) {
-                        pLevel.setBlock(pPos, pState.setValue(OPEN, true).setValue(ITEMS, pLevel.random.nextInt(3, 5)), 2);
+                        pLevel.setBlock(pPos, pState.setValue(OPEN, true).setValue(ITEMS, pLevel.random.nextInt(3, 6)), 2);
                     }
                     pLevel.playSound(null, pPos, SoundInit.ANCIENT_CRYPT_OPEN.get(), SoundSource.BLOCKS);
                 }
@@ -112,9 +129,9 @@ public class AncientCryptBlock extends Block {
             if (!pLevel.isClientSide()) {
                 LootTable lootTable = pLevel.getServer().getLootData().getLootTable(LOOT_TABLE);
 
-                List<ItemStack> itemList = lootTable.getRandomItems((new LootParams.Builder((ServerLevel) pLevel)).withParameter(LootContextParams.BLOCK_STATE, pState).create(LootContextParamSets.PIGLIN_BARTER));
+                List<ItemStack> itemList = lootTable.getRandomItems((new LootParams.Builder((ServerLevel) pLevel)).withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf((pPos))).create(LootContextParamSets.CHEST));
 
-                ItemEntity item = new ItemEntity(pLevel, spawnPos.x, spawnPos.y + 0.5, spawnPos.z, itemList.get(pLevel.random.nextInt(0, itemList.size())));
+                ItemEntity item = new ItemEntity(pLevel, spawnPos.x, spawnPos.y + 0.5, spawnPos.z, itemList.get(0));
                 item.setDeltaMovement(pLevel.random.triangle(0.0F, 0.11485000171139836), pLevel.random.triangle(0.2, 0.11485000171139836), pLevel.random.triangle(0.0F, 0.11485000171139836));
                 pLevel.addFreshEntity(item);
                 pLevel.playSound(null, pPos, SoundEvents.ITEM_FRAME_ADD_ITEM, SoundSource.BLOCKS, 1.0f, 0.8f);
