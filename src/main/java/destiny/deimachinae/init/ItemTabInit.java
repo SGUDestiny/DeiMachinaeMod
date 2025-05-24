@@ -39,6 +39,8 @@ public class ItemTabInit {
                         output.accept(ItemInit.RUDIMENTARY_DATA_VESSEL.get());
                         output.accept(ItemInit.STANDARD_DATA_VESSEL.get());
 
+                        output.accept(ItemInit.PURITY_SEAL.get());
+
                         //Materials
                         output.accept(ItemInit.OIL_FLASK.get());
                     })).build());
@@ -50,12 +52,12 @@ public class ItemTabInit {
                     .withTabsBefore(SPIRITUALISM.getKey())
                     .displayItems(((itemDisplayParameters, output) -> {
                         //Materials
-                        output.accept(ItemInit.ARCHEOBRASS_PLATE.get());
-                        output.accept(ItemInit.IRON_PLATE.get());
-                        output.accept(ItemInit.COPPER_PLATE.get());
-
                         output.accept(ItemInit.ARCHEOBRASS_INGOT.get());
                         output.accept(ItemInit.ARCHEOBRASS_NUGGET.get());
+                        output.accept(ItemInit.ARCHEOBRASS_PLATE.get());
+
+                        output.accept(ItemInit.IRON_PLATE.get());
+                        output.accept(ItemInit.COPPER_PLATE.get());
 
                         output.accept(ItemInit.NOCTILITH_SHARD.get());
 
@@ -66,8 +68,8 @@ public class ItemTabInit {
 
                         //Blocks
                         output.accept(BlockInit.ARCHEOBRASS_BLOCK.get());
-                        output.accept(BlockInit.NOCTILITH_ORE.get());
                         output.accept(BlockInit.SCRAP_PILE.get());
+                        output.accept(BlockInit.NOCTILITH_ORE.get());
                     })).build());
 
     public static void register(IEventBus bus)

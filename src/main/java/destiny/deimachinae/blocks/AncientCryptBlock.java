@@ -124,8 +124,6 @@ public class AncientCryptBlock extends Block {
         } else if (pState.getValue(ITEMS) != 0 && !(stack.getItem() instanceof PickaxeItem)) {
             Vec3 spawnPos = pPos.getCenter();
 
-            System.out.println("Stack empty:" + stack.isEmpty());
-
             if (!pLevel.isClientSide()) {
                 LootTable lootTable = pLevel.getServer().getLootData().getLootTable(LOOT_TABLE);
 
