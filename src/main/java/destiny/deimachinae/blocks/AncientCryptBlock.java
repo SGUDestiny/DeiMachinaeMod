@@ -45,7 +45,7 @@ import java.util.List;
 public class AncientCryptBlock extends Block {
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static final BooleanProperty OPEN = BlockStateProperties.OPEN;
-    public static final IntegerProperty ITEMS = IntegerProperty.create("items", 0, 6);
+    public static final IntegerProperty ITEMS = IntegerProperty.create("items", 0, 9);
     public static final IntegerProperty ATTEMPTS = IntegerProperty.create("attempts", 0, 5);
 
     public static final ResourceLocation LOOT_TABLE = new ResourceLocation(DeiMachinaeMod.MODID, "gameplay/ancient_crypt_loot");
@@ -103,7 +103,7 @@ public class AncientCryptBlock extends Block {
                 if (attempts < 4) {
                     if (pLevel.random.nextDouble() > 0.75) {
                         if (!pLevel.isClientSide()) {
-                            pLevel.setBlock(pPos, pState.setValue(OPEN, true).setValue(ITEMS, pLevel.random.nextInt(3, 6)), 2);
+                            pLevel.setBlock(pPos, pState.setValue(OPEN, true).setValue(ITEMS, pLevel.random.nextInt(4, 9)), 2);
                         }
                         pLevel.playSound(null, pPos, SoundInit.ANCIENT_CRYPT_OPEN.get(), SoundSource.BLOCKS);
                     } else {
@@ -114,7 +114,7 @@ public class AncientCryptBlock extends Block {
                     }
                 } else {
                     if (!pLevel.isClientSide()) {
-                        pLevel.setBlock(pPos, pState.setValue(OPEN, true).setValue(ITEMS, pLevel.random.nextInt(3, 6)), 2);
+                        pLevel.setBlock(pPos, pState.setValue(OPEN, true).setValue(ITEMS, pLevel.random.nextInt(4, 9)), 2);
                     }
                     pLevel.playSound(null, pPos, SoundInit.ANCIENT_CRYPT_OPEN.get(), SoundSource.BLOCKS);
                 }
@@ -132,7 +132,7 @@ public class AncientCryptBlock extends Block {
                 ItemEntity item = new ItemEntity(pLevel, spawnPos.x, spawnPos.y + 0.5, spawnPos.z, itemList.get(0));
                 item.setDeltaMovement(pLevel.random.triangle(0.0F, 0.11485000171139836), pLevel.random.triangle(0.2, 0.11485000171139836), pLevel.random.triangle(0.0F, 0.11485000171139836));
                 pLevel.addFreshEntity(item);
-                pLevel.playSound(null, pPos, SoundEvents.ITEM_FRAME_ADD_ITEM, SoundSource.BLOCKS, 1.0f, 0.8f);
+                pLevel.playSound(null, pPos, SoundEvents.ITEM_PICKUP, SoundSource.BLOCKS, 1.0f, 0.5f);
 
                 pLevel.setBlock(pPos, pState.setValue(ITEMS, pState.getValue(ITEMS) - 1), 2);
             }
