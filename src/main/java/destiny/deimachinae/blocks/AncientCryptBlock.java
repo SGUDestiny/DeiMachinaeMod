@@ -132,7 +132,7 @@ public class AncientCryptBlock extends Block {
                 ItemEntity item = new ItemEntity(pLevel, spawnPos.x, spawnPos.y + 0.5, spawnPos.z, itemList.get(0));
                 item.setDeltaMovement(pLevel.random.triangle(0.0F, 0.11485000171139836), pLevel.random.triangle(0.2, 0.11485000171139836), pLevel.random.triangle(0.0F, 0.11485000171139836));
                 pLevel.addFreshEntity(item);
-                pLevel.playSound(null, pPos, SoundEvents.ITEM_PICKUP, SoundSource.BLOCKS, 1.0f, 0.5f);
+                pLevel.playSound(null, pPos, SoundEvents.ITEM_FRAME_ROTATE_ITEM, SoundSource.BLOCKS, 1.0f, 0.5f);
 
                 pLevel.setBlock(pPos, pState.setValue(ITEMS, pState.getValue(ITEMS) - 1), 2);
             }
