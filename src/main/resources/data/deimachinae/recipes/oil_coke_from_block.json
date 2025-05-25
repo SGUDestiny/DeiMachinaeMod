@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "deimachinae:oil_coke_block"
+    }
+  ],
+  "result": {
+    "item": "deimachinae:oil_coke",
+    "count": 9
+  },
+  "show_notification": true
+}

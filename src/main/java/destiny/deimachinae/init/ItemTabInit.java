@@ -52,25 +52,27 @@ public class ItemTabInit {
                     .withTabsBefore(SPIRITUALISM.getKey())
                     .displayItems(((itemDisplayParameters, output) -> {
                         //Materials
-                        output.accept(ItemInit.ARCHEOBRASS_INGOT.get());
-                        output.accept(ItemInit.ARCHEOBRASS_NUGGET.get());
-                        output.accept(ItemInit.ARCHEOBRASS_PLATE.get());
-
-                        output.accept(ItemInit.IRON_PLATE.get());
-                        output.accept(ItemInit.COPPER_PLATE.get());
+                        output.accept(ItemInit.OIL_COKE.get());
+                        output.accept(ItemInit.OIL_COKE_BLOCK.get());
+                        output.accept(ItemInit.OIL_BUCKET.get());
 
                         output.accept(ItemInit.NOCTILITH_SHARD.get());
+                        output.accept(BlockInit.NOCTILITH_ORE.get());
+
+                        output.accept(ItemInit.ARCHEOBRASS_INGOT.get());
+                        output.accept(ItemInit.ARCHEOBRASS_NUGGET.get());
+                        output.accept(BlockInit.ARCHEOBRASS_BLOCK.get());
+                        output.accept(BlockInit.SCRAP_PILE.get());
+
+                        output.accept(ItemInit.ARCHEOBRASS_PLATE.get());
+                        output.accept(ItemInit.IRON_PLATE.get());
+                        output.accept(ItemInit.COPPER_PLATE.get());
 
                         //Components
                         output.accept(ItemInit.COGITATOR.get());
                         output.accept(ItemInit.MOTHERBOARD.get());
                         output.accept(ItemInit.WORN_GEARS.get());
-
-                        //Blocks
-                        output.accept(BlockInit.ARCHEOBRASS_BLOCK.get());
-                        output.accept(BlockInit.SCRAP_PILE.get());
-                        output.accept(BlockInit.NOCTILITH_ORE.get());
-                        output.accept(ItemInit.OIL_BUCKET.get());
+                        output.accept(ItemInit.REDSTONE_FILAMENT.get());
                     })).build());
 
     public static void register(IEventBus bus)

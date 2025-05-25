@@ -14,10 +14,14 @@
 
   "item.deimachinae.noctilith_shard": "Noctilith Shard",
 
+  "item.deimachinae.oil_coke": "Oil Coke",
+  "item.deimachinae.oil_bucket": "Oil Bucket",
+
   "_components": "Components",
   "item.deimachinae.cogitator": "Cogitator",
   "item.deimachinae.motherboard": "Motherboard",
   "item.deimachinae.worn_gears": "Worn Gears",
+  "item.deimachinae.redstone_filament": "Redstone Filament",
 
   "item.deimachinae.hammer_arm": "Hammer Arm",
 
@@ -38,6 +42,9 @@
 
   "block.deimachinae.noctilith_ore": "Noctilith Ore",
   "block.deimachinae.scrap_pile": "Scrap Pile",
+
+  "block.deimachinae.oil": "Oil",
+  "block.deimachinae.oil_coke_block": "Oil Coke Block",
 
 
 

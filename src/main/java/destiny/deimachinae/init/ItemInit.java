@@ -2,6 +2,8 @@ package destiny.deimachinae.init;
 
 import destiny.deimachinae.DeiMachinaeMod;
 import destiny.deimachinae.items.AncientCryptBlockItem;
+import destiny.deimachinae.items.FuelBlockItem;
+import destiny.deimachinae.items.FuelItem;
 import destiny.deimachinae.items.OmnispexItem;
 import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.Item;
@@ -27,12 +29,15 @@ public class ItemInit {
 
     public static final RegistryObject<Item> NOCTILITH_SHARD = ITEMS.register("noctilith_shard", () -> new Item(new Item.Properties()));
 
+    public static final RegistryObject<Item> OIL_COKE = ITEMS.register("oil_coke", () -> new FuelItem(new Item.Properties(), 3200));
+    public static final RegistryObject<Item> OIL_COKE_BLOCK = ITEMS.register("oil_coke_block", () -> new FuelBlockItem(BlockInit.OIL_COKE_BLOCK.get(), new Item.Properties(), 28800));
     public static final RegistryObject<Item> OIL_BUCKET = ITEMS.register("oil_bucket", () -> new BucketItem(FluidInit.SOURCE_OIL.get(), new Item.Properties().stacksTo(1).craftRemainder(Items.BUCKET)));
 
     //Components
     public static final RegistryObject<Item> COGITATOR = ITEMS.register("cogitator", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> MOTHERBOARD = ITEMS.register("motherboard", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> WORN_GEARS = ITEMS.register("worn_gears", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> REDSTONE_FILAMENT = ITEMS.register("redstone_filament", () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> HAMMER_ARM = ITEMS.register("hammer_arm", () -> new Item(new Item.Properties().stacksTo(1)));
 

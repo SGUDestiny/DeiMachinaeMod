@@ -47,6 +47,20 @@
         },
         {
           "type": "minecraft:item",
+          "name": "deimachinae:redstone_filament",
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 3,
+                "max": 5
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
           "name": "deimachinae:oil_flask",
           "functions": [
             {
