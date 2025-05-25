@@ -3,7 +3,9 @@ package destiny.deimachinae.init;
 import destiny.deimachinae.DeiMachinaeMod;
 import destiny.deimachinae.items.AncientCryptBlockItem;
 import destiny.deimachinae.items.OmnispexItem;
+import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -24,6 +26,8 @@ public class ItemInit {
     public static final RegistryObject<Item> ARCHEOBRASS_NUGGET = ITEMS.register("archeobrass_nugget", () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> NOCTILITH_SHARD = ITEMS.register("noctilith_shard", () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> OIL_BUCKET = ITEMS.register("oil_bucket", () -> new BucketItem(FluidInit.SOURCE_OIL.get(), new Item.Properties().stacksTo(1).craftRemainder(Items.BUCKET)));
 
     //Components
     public static final RegistryObject<Item> COGITATOR = ITEMS.register("cogitator", () -> new Item(new Item.Properties()));

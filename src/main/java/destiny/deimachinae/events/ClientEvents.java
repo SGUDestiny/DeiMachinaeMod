@@ -1,7 +1,10 @@
 package destiny.deimachinae.events;
 
+import destiny.deimachinae.init.FluidInit;
 import destiny.deimachinae.init.ItemInit;
 import destiny.deimachinae.items.properties.OmnispexItemProperty;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTabs;
@@ -29,6 +32,8 @@ public class ClientEvents {
 
     @SubscribeEvent
     public static void onClientSetup(FMLClientSetupEvent event) {
+        ItemBlockRenderTypes.setRenderLayer(FluidInit.SOURCE_OIL.get(), RenderType.solid());
+
         event.enqueueWork(() -> {
             ItemProperties.register(ItemInit.OMNISPEX.get(), new ResourceLocation(MODID, "omnispex_ping"), new OmnispexItemProperty());
         });

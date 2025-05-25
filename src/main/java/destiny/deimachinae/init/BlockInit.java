@@ -4,9 +4,7 @@ import destiny.deimachinae.DeiMachinaeMod;
 import destiny.deimachinae.blocks.AncientCryptBlock;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.FallingBlock;
-import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -24,6 +22,9 @@ public class BlockInit {
     public static final RegistryObject<Block> ARCHEOBRASS_BLOCK = registerBlock("archeobrass_block", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_YELLOW).strength(3.0F).sound(SoundType.COPPER).requiresCorrectToolForDrops()));
     public static final RegistryObject<Block> SCRAP_PILE = registerBlock("scrap_pile", () -> new FallingBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_YELLOW).strength(4.0F).sound(SoundType.ANCIENT_DEBRIS).requiresCorrectToolForDrops().noOcclusion()));
     public static final RegistryObject<Block> NOCTILITH_ORE = registerBlock("noctilith_ore", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_YELLOW).strength(5.0F).sound(SoundType.GILDED_BLACKSTONE).requiresCorrectToolForDrops().explosionResistance(1000)));
+
+    public static final RegistryObject<LiquidBlock> OIL = BLOCKS.register("oil",
+            () -> new LiquidBlock(FluidInit.SOURCE_OIL, BlockBehaviour.Properties.copy(Blocks.WATER).noLootTable()));
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);

@@ -70,6 +70,7 @@ public class ItemTabInit {
                         output.accept(BlockInit.ARCHEOBRASS_BLOCK.get());
                         output.accept(BlockInit.SCRAP_PILE.get());
                         output.accept(BlockInit.NOCTILITH_ORE.get());
+                        output.accept(ItemInit.OIL_BUCKET.get());
                     })).build());
 
     public static void register(IEventBus bus)
