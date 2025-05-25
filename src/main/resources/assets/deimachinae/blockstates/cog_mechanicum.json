@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "deimachinae:block/cog_mechanicum",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "deimachinae:block/cog_mechanicum"
+    },
+    "facing=south": {
+      "model": "deimachinae:block/cog_mechanicum",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "deimachinae:block/cog_mechanicum",
+      "y": 270
+    }
+  }
+}

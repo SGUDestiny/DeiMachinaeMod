@@ -27,6 +27,9 @@ public class ItemTabInit {
                         output.accept(ItemInit.STANDARD_TEMPLATE_CONSTRUCT.get());
 
                         output.accept(ItemInit.ANCIENT_CRYPT.get());
+
+                        output.accept(ItemInit.IMPERIAL_AQUILA.get());
+                        output.accept(ItemInit.COG_MECHANICUM.get());
                     })).build());
 
     public static final RegistryObject<CreativeModeTab> SPIRITUALISM = TABS.register("spiritualism",

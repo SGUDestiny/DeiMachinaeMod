@@ -3,6 +3,9 @@
   "values": [
     "deimachinae:scrap_pile",
     "deimachinae:noctilith_ore",
-    "deimachinae:ancient_crypt"
+    "deimachinae:ancient_crypt",
+    "deimachinae:oil_coke_block",
+    "deimachinae:imperial_aquila",
+    "deimachinae:cog_mechanicum"
   ]
 }

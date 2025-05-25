@@ -2,6 +2,8 @@
   "replace": false,
   "values": [
     "deimachinae:scrap_pile",
-    "deimachinae:ancient_crypt"
+    "deimachinae:ancient_crypt",
+    "deimachinae:imperial_aquila",
+    "deimachinae:cog_mechanicum"
   ]
 }
