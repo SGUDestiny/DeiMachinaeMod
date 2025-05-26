@@ -44,6 +44,8 @@ public class ItemTabInit {
 
                         output.accept(ItemInit.PURITY_SEAL.get());
 
+                        output.accept(ItemInit.INCENSE_BURNER.get());
+
                         //Materials
                         output.accept(ItemInit.OIL_FLASK.get());
                     })).build());

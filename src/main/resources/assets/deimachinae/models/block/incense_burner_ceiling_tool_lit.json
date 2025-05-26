@@ -1,0 +1,7 @@
+{
+	"parent": "deimachinae:block/incense_burner_ceiling",
+	"textures": {
+		"1": "deimachinae:block/incense_burner_tool_lit",
+		"particle": "deimachinae:block/incense_burner_tool_lit"
+	}
+}

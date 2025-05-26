@@ -1,4 +1,4 @@
-package destiny.deimachinae.items;
+package destiny.deimachinae.items.block;
 
 import destiny.deimachinae.init.BlockInit;
 import net.minecraft.core.BlockPos;

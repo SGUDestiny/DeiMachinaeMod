@@ -1,0 +1,7 @@
+{
+	"parent": "deimachinae:block/incense_burner_wall",
+	"textures": {
+		"1": "deimachinae:block/incense_burner_weapon",
+		"particle": "deimachinae:block/incense_burner_weapon"
+	}
+}

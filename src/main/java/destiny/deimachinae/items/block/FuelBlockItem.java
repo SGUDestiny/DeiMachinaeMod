@@ -1,4 +1,4 @@
-package destiny.deimachinae.items;
+package destiny.deimachinae.items.block;
 
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;

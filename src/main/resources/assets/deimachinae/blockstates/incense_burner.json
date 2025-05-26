@@ -1,0 +1,277 @@
+{
+  "variants": {
+    "facing=east,lit=false,type=0": {
+      "model": "deimachinae:block/incense_burner_wall",
+      "y": 90
+    },
+    "facing=north,lit=false,type=0": {
+      "model": "deimachinae:block/incense_burner_wall"
+    },
+    "facing=south,lit=false,type=0": {
+      "model": "deimachinae:block/incense_burner_wall",
+      "y": 180
+    },
+    "facing=west,lit=false,type=0": {
+      "model": "deimachinae:block/incense_burner_wall",
+      "y": 270
+    },
+    "facing=up,lit=false,type=0": {
+      "model": "deimachinae:block/incense_burner_ceiling"
+    },
+    "facing=down,lit=false,type=0": {
+      "model": "deimachinae:block/incense_burner_floor"
+    },
+
+    "facing=east,lit=true,type=0": {
+      "model": "deimachinae:block/incense_burner_wall",
+      "y": 90
+    },
+    "facing=north,lit=true,type=0": {
+      "model": "deimachinae:block/incense_burner_wall"
+    },
+    "facing=south,lit=true,type=0": {
+      "model": "deimachinae:block/incense_burner_wall",
+      "y": 180
+    },
+    "facing=west,lit=true,type=0": {
+      "model": "deimachinae:block/incense_burner_wall",
+      "y": 270
+    },
+    "facing=up,lit=true,type=0": {
+      "model": "deimachinae:block/incense_burner_ceiling"
+    },
+    "facing=down,lit=true,type=0": {
+      "model": "deimachinae:block/incense_burner_floor"
+    },
+
+
+
+    "facing=east,lit=false,type=1": {
+      "model": "deimachinae:block/incense_burner_wall_general",
+      "y": 90
+    },
+    "facing=north,lit=false,type=1": {
+      "model": "deimachinae:block/incense_burner_wall_general"
+    },
+    "facing=south,lit=false,type=1": {
+      "model": "deimachinae:block/incense_burner_wall_general",
+      "y": 180
+    },
+    "facing=west,lit=false,type=1": {
+      "model": "deimachinae:block/incense_burner_wall_general",
+      "y": 270
+    },
+    "facing=up,lit=false,type=1": {
+      "model": "deimachinae:block/incense_burner_ceiling_general"
+    },
+    "facing=down,lit=false,type=1": {
+      "model": "deimachinae:block/incense_burner_floor_general"
+    },
+
+    "facing=east,lit=true,type=1": {
+      "model": "deimachinae:block/incense_burner_wall_general_lit",
+      "y": 90
+    },
+    "facing=north,lit=true,type=1": {
+      "model": "deimachinae:block/incense_burner_wall_general_lit"
+    },
+    "facing=south,lit=true,type=1": {
+      "model": "deimachinae:block/incense_burner_wall_general_lit",
+      "y": 180
+    },
+    "facing=west,lit=true,type=1": {
+      "model": "deimachinae:block/incense_burner_wall_general_lit",
+      "y": 270
+    },
+    "facing=up,lit=true,type=1": {
+      "model": "deimachinae:block/incense_burner_ceiling_general_lit"
+    },
+    "facing=down,lit=true,type=1": {
+      "model": "deimachinae:block/incense_burner_floor_general_lit"
+    },
+
+
+
+    "facing=east,lit=false,type=2": {
+      "model": "deimachinae:block/incense_burner_wall_machinery",
+      "y": 90
+    },
+    "facing=north,lit=false,type=2": {
+      "model": "deimachinae:block/incense_burner_wall_machinery"
+    },
+    "facing=south,lit=false,type=2": {
+      "model": "deimachinae:block/incense_burner_wall_machinery",
+      "y": 180
+    },
+    "facing=west,lit=false,type=2": {
+      "model": "deimachinae:block/incense_burner_wall_machinery",
+      "y": 270
+    },
+    "facing=up,lit=false,type=2": {
+      "model": "deimachinae:block/incense_burner_ceiling_machinery"
+    },
+    "facing=down,lit=false,type=2": {
+      "model": "deimachinae:block/incense_burner_floor_machinery"
+    },
+
+    "facing=east,lit=true,type=2": {
+      "model": "deimachinae:block/incense_burner_wall_machinery_lit",
+      "y": 90
+    },
+    "facing=north,lit=true,type=2": {
+      "model": "deimachinae:block/incense_burner_wall_machinery_lit"
+    },
+    "facing=south,lit=true,type=2": {
+      "model": "deimachinae:block/incense_burner_wall_machinery_lit",
+      "y": 180
+    },
+    "facing=west,lit=true,type=2": {
+      "model": "deimachinae:block/incense_burner_wall_machinery_lit",
+      "y": 270
+    },
+    "facing=up,lit=true,type=2": {
+      "model": "deimachinae:block/incense_burner_ceiling_machinery_lit"
+    },
+    "facing=down,lit=true,type=2": {
+      "model": "deimachinae:block/incense_burner_floor_machinery_lit"
+    },
+
+
+
+    "facing=east,lit=false,type=3": {
+      "model": "deimachinae:block/incense_burner_wall_weapon",
+      "y": 90
+    },
+    "facing=north,lit=false,type=3": {
+      "model": "deimachinae:block/incense_burner_wall_weapon"
+    },
+    "facing=south,lit=false,type=3": {
+      "model": "deimachinae:block/incense_burner_wall_weapon",
+      "y": 180
+    },
+    "facing=west,lit=false,type=3": {
+      "model": "deimachinae:block/incense_burner_wall_weapon",
+      "y": 270
+    },
+    "facing=up,lit=false,type=3": {
+      "model": "deimachinae:block/incense_burner_ceiling_weapon"
+    },
+    "facing=down,lit=false,type=3": {
+      "model": "deimachinae:block/incense_burner_floor_weapon"
+    },
+
+    "facing=east,lit=true,type=3": {
+      "model": "deimachinae:block/incense_burner_wall_weapon_lit",
+      "y": 90
+    },
+    "facing=north,lit=true,type=3": {
+      "model": "deimachinae:block/incense_burner_wall_weapon_lit"
+    },
+    "facing=south,lit=true,type=3": {
+      "model": "deimachinae:block/incense_burner_wall_weapon_lit",
+      "y": 180
+    },
+    "facing=west,lit=true,type=3": {
+      "model": "deimachinae:block/incense_burner_wall_weapon_lit",
+      "y": 270
+    },
+    "facing=up,lit=true,type=3": {
+      "model": "deimachinae:block/incense_burner_ceiling_weapon_lit"
+    },
+    "facing=down,lit=true,type=3": {
+      "model": "deimachinae:block/incense_burner_floor_weapon_lit"
+    },
+
+
+
+    "facing=east,lit=false,type=4": {
+      "model": "deimachinae:block/incense_burner_wall_tool",
+      "y": 90
+    },
+    "facing=north,lit=false,type=4": {
+      "model": "deimachinae:block/incense_burner_wall_tool"
+    },
+    "facing=south,lit=false,type=4": {
+      "model": "deimachinae:block/incense_burner_wall_tool",
+      "y": 180
+    },
+    "facing=west,lit=false,type=4": {
+      "model": "deimachinae:block/incense_burner_wall_tool",
+      "y": 270
+    },
+    "facing=up,lit=false,type=4": {
+      "model": "deimachinae:block/incense_burner_ceiling_tool"
+    },
+    "facing=down,lit=false,type=4": {
+      "model": "deimachinae:block/incense_burner_floor_tool"
+    },
+
+    "facing=east,lit=true,type=4": {
+      "model": "deimachinae:block/incense_burner_wall_tool_lit",
+      "y": 90
+    },
+    "facing=north,lit=true,type=4": {
+      "model": "deimachinae:block/incense_burner_wall_tool_lit"
+    },
+    "facing=south,lit=true,type=4": {
+      "model": "deimachinae:block/incense_burner_wall_tool_lit",
+      "y": 180
+    },
+    "facing=west,lit=true,type=4": {
+      "model": "deimachinae:block/incense_burner_wall_tool_lit",
+      "y": 270
+    },
+    "facing=up,lit=true,type=4": {
+      "model": "deimachinae:block/incense_burner_ceiling_tool_lit"
+    },
+    "facing=down,lit=true,type=4": {
+      "model": "deimachinae:block/incense_burner_floor_tool_lit"
+    },
+
+
+
+    "facing=east,lit=false,type=5": {
+      "model": "deimachinae:block/incense_burner_wall_armor",
+      "y": 90
+    },
+    "facing=north,lit=false,type=5": {
+      "model": "deimachinae:block/incense_burner_wall_armor"
+    },
+    "facing=south,lit=false,type=5": {
+      "model": "deimachinae:block/incense_burner_wall_armor",
+      "y": 180
+    },
+    "facing=west,lit=false,type=5": {
+      "model": "deimachinae:block/incense_burner_wall_armor",
+      "y": 270
+    },
+    "facing=up,lit=false,type=5": {
+      "model": "deimachinae:block/incense_burner_ceiling_armor"
+    },
+    "facing=down,lit=false,type=5": {
+      "model": "deimachinae:block/incense_burner_floor_armor"
+    },
+
+    "facing=east,lit=true,type=5": {
+      "model": "deimachinae:block/incense_burner_wall_armor_lit",
+      "y": 90
+    },
+    "facing=north,lit=true,type=5": {
+      "model": "deimachinae:block/incense_burner_wall_armor_lit"
+    },
+    "facing=south,lit=true,type=5": {
+      "model": "deimachinae:block/incense_burner_wall_armor_lit",
+      "y": 180
+    },
+    "facing=west,lit=true,type=5": {
+      "model": "deimachinae:block/incense_burner_wall_armor_lit",
+      "y": 270
+    },
+    "facing=up,lit=true,type=5": {
+      "model": "deimachinae:block/incense_burner_ceiling_armor_lit"
+    },
+    "facing=down,lit=true,type=5": {
+      "model": "deimachinae:block/incense_burner_floor_armor_lit"
+    }
+  }
+}

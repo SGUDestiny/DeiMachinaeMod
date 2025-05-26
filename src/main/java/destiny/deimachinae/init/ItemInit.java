@@ -2,7 +2,10 @@ package destiny.deimachinae.init;
 
 import destiny.deimachinae.DeiMachinaeMod;
 import destiny.deimachinae.items.*;
-import net.minecraft.world.item.BlockItem;
+import destiny.deimachinae.items.block.AncientCryptBlockItem;
+import destiny.deimachinae.items.block.FuelBlockItem;
+import destiny.deimachinae.items.block.HorizontalWallBlockItem;
+import destiny.deimachinae.items.block.IncenseBurnerBlockItem;
 import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
@@ -52,8 +55,9 @@ public class ItemInit {
 
     //Block Items
     public static final RegistryObject<Item> ANCIENT_CRYPT = ITEMS.register("ancient_crypt", () -> new AncientCryptBlockItem(new Item.Properties()));
-    public static final RegistryObject<Item> IMPERIAL_AQUILA = ITEMS.register("imperial_aquila", () -> new BlockItem(BlockInit.IMPERIAL_AQUILA.get(), new Item.Properties()));
-    public static final RegistryObject<Item> COG_MECHANICUM = ITEMS.register("cog_mechanicum", () -> new BlockItem(BlockInit.COG_MECHANICUM.get(), new Item.Properties()));
+    public static final RegistryObject<Item> IMPERIAL_AQUILA = ITEMS.register("imperial_aquila", () -> new HorizontalWallBlockItem(BlockInit.IMPERIAL_AQUILA.get(), new Item.Properties()));
+    public static final RegistryObject<Item> COG_MECHANICUM = ITEMS.register("cog_mechanicum", () -> new HorizontalWallBlockItem(BlockInit.COG_MECHANICUM.get(), new Item.Properties()));
+    public static final RegistryObject<Item> INCENSE_BURNER = ITEMS.register("incense_burner", () -> new IncenseBurnerBlockItem(new Item.Properties()));
 
     public static void register(IEventBus bus) {
         ITEMS.register(bus);
