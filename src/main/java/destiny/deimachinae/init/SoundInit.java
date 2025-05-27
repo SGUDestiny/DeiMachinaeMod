@@ -16,6 +16,7 @@ public class SoundInit {
     public static RegistryObject<SoundEvent> TECH_ON = registerSoundEvent("tech_on");
     public static RegistryObject<SoundEvent> TECH_OFF = registerSoundEvent("tech_off");
     public static RegistryObject<SoundEvent> ANCIENT_CRYPT_OPEN = registerSoundEvent("ancient_crypt_open");
+    public static RegistryObject<SoundEvent> MACHINERY_ACTIVE = registerSoundEvent("machinery_active");
 
     private static RegistryObject<SoundEvent> registerSoundEvent(String sound)
     {

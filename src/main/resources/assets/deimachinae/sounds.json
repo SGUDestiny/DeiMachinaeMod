@@ -33,5 +33,12 @@
     [
       "deimachinae:ancient_crypt_open"
     ]
+  },
+  "machinery_active": {
+    "subtitle": "sound.deimachinae.machinery_active",
+    "sounds":
+    [
+      "deimachinae:machinery_active"
+    ]
   }
 }

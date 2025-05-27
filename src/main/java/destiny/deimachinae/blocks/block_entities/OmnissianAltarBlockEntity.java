@@ -1,6 +1,7 @@
 package destiny.deimachinae.blocks.block_entities;
 
 import destiny.deimachinae.init.BlockEntityInit;
+import destiny.deimachinae.init.SoundInit;
 import destiny.deimachinae.items.MachineSpiritItem;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -8,6 +9,7 @@ import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.Connection;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -33,6 +35,7 @@ import javax.annotation.Nonnull;
 public class OmnissianAltarBlockEntity extends BlockEntity implements GeoBlockEntity {
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
 
+    private int soundTicker = 80;
     public int craftingTicks = 0;
     public final ItemStackHandler inputSlot;
     private final LazyOptional<IItemHandler> inputHandler;
@@ -53,6 +56,22 @@ public class OmnissianAltarBlockEntity extends BlockEntity implements GeoBlockEn
     }
 
     public static void tick(Level level, BlockPos pos, BlockState state, OmnissianAltarBlockEntity altar) {
+        if (!level.isClientSide()) {
+            soundHandling(level, pos, state, altar);
+        }
+    }
+
+    public static void soundHandling(Level level, BlockPos pos, BlockState state, OmnissianAltarBlockEntity altar) {
+        if (altar.inputSlot.getStackInSlot(0).getItem() instanceof MachineSpiritItem) {
+            if (altar.soundTicker >= 80) {
+                level.playSound(null, pos, SoundInit.MACHINERY_ACTIVE.get(), SoundSource.BLOCKS, 0.1f, 1.0f);
+                altar.soundTicker = 0;
+            } else {
+                altar.soundTicker++;
+            }
+        } else {
+            altar.soundTicker = 80;
+        }
     }
 
     private <T extends OmnissianAltarBlockEntity> PlayState handleAnimationState(AnimationState<T> state) {
@@ -81,6 +100,7 @@ public class OmnissianAltarBlockEntity extends BlockEntity implements GeoBlockEn
         super.load(compound);
         inputSlot.deserializeNBT(compound.getCompound("InputSlot"));
         craftingTicks = compound.getInt("CraftingTicks");
+        updateBlockStateDelayed();
     }
 
     @Override
@@ -93,6 +113,37 @@ public class OmnissianAltarBlockEntity extends BlockEntity implements GeoBlockEn
     @Override
     public ClientboundBlockEntityDataPacket getUpdatePacket() {
         return ClientboundBlockEntityDataPacket.create(this);
+    }
+
+    protected void saveForSyncToClient(CompoundTag tag) {
+        tag.put("InputSlot", inputSlot.serializeNBT());
+    }
+
+    protected void syncToClient() {
+        if (level != null && !level.isClientSide) {
+            BlockState state = getBlockState();
+            level.sendBlockUpdated(getBlockPos(), state, state, Block.UPDATE_CLIENTS);
+        }
+    }
+
+    @Override
+    public CompoundTag getUpdateTag() {
+        CompoundTag tag = new CompoundTag();
+        saveForSyncToClient(tag);
+        return tag;
+    }
+
+    protected void updateBlockStateDelayed() {
+        if (level == null || level.isClientSide()) return;
+        level.scheduleTick(getBlockPos(), getBlockState().getBlock(), 1);
+    }
+
+    @Override
+    public void onDataPacket(Connection net, ClientboundBlockEntityDataPacket packet) {
+        super.onDataPacket(net, packet);
+        if (level != null) {
+            level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 0); //cause re-render
+        }
     }
 
     @Override
@@ -118,14 +169,10 @@ public class OmnissianAltarBlockEntity extends BlockEntity implements GeoBlockEn
         {
             @Override
             protected void onContentsChanged(int slot) {
-                markUpdated();
+                syncToClient();
+                setChanged();
+                updateBlockStateDelayed();
             }
         };
-    }
-
-    private void markUpdated() {
-        super.setChanged();
-        if (level != null)
-            level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), Block.UPDATE_CLIENTS);
     }
 }
