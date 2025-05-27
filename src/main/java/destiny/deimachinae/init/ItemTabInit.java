@@ -17,6 +17,9 @@ public class ItemTabInit {
                     .icon(() -> ItemInit.OMNISPEX.get().getDefaultInstance())
                     .title(Component.translatable("tab.deimachinae.technology"))
                     .displayItems(((itemDisplayParameters, output) -> {
+                        //Machines
+                        output.accept(BlockInit.OMNISSIAN_ALTAR.get());
+
                         //Tools
                         output.accept(ItemInit.OMNISPEX.get());
 
@@ -27,9 +30,6 @@ public class ItemTabInit {
                         output.accept(ItemInit.STANDARD_TEMPLATE_CONSTRUCT.get());
 
                         output.accept(ItemInit.ANCIENT_CRYPT.get());
-
-                        output.accept(ItemInit.IMPERIAL_AQUILA.get());
-                        output.accept(ItemInit.COG_MECHANICUM.get());
                     })).build());
 
     public static final RegistryObject<CreativeModeTab> SPIRITUALISM = TABS.register("spiritualism",
@@ -48,6 +48,9 @@ public class ItemTabInit {
 
                         //Materials
                         output.accept(ItemInit.OIL_FLASK.get());
+
+                        output.accept(ItemInit.IMPERIAL_AQUILA.get());
+                        output.accept(ItemInit.COG_MECHANICUM.get());
                     })).build());
 
     public static final RegistryObject<CreativeModeTab> MATERIALS = TABS.register("materials",
