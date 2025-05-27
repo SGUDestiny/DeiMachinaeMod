@@ -1,0 +1,389 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"omnissian_altar.ready_loop": {
+			"loop": true,
+			"animation_length": 3,
+			"bones": {
+				"Arm2": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 11.25]
+						},
+						"1.5": {
+							"vector": [0, 0, 45],
+							"easing": "easeInOutSine"
+						},
+						"3.0": {
+							"vector": [0, 0, 11.25],
+							"easing": "easeInOutSine"
+						}
+					}
+				},
+				"Arm9": {
+					"relative_to": {
+						"rotation": "entity"
+					},
+					"rotation": [0, 0, 0.01]
+				},
+				"Cog1": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"3.0": {
+							"vector": [0, 0, 360]
+						}
+					}
+				},
+				"Arm1": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"1.5": {
+							"vector": [0, 0, -22.5],
+							"easing": "easeInOutSine"
+						},
+						"3.0": {
+							"vector": [0, 0, 0],
+							"easing": "easeInOutSine"
+						}
+					}
+				},
+				"Arm3": {
+					"relative_to": {
+						"rotation": "entity"
+					},
+					"rotation": [0, 0, 0.01]
+				},
+				"Arm4": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"1.5": {
+							"vector": [0, 0, 22.5],
+							"easing": "easeInOutSine"
+						},
+						"3.0": {
+							"vector": [0, 0, 0],
+							"easing": "easeInOutSine"
+						}
+					}
+				},
+				"Arm5": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, -11.25]
+						},
+						"1.5": {
+							"vector": [0, 0, -45],
+							"easing": "easeInOutSine"
+						},
+						"3.0": {
+							"vector": [0, 0, -11.25],
+							"easing": "easeInOutSine"
+						}
+					}
+				},
+				"Cog2": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"3.0": {
+							"vector": [0, 0, -360]
+						}
+					}
+				},
+				"Arm6": {
+					"relative_to": {
+						"rotation": "entity"
+					},
+					"rotation": [0, 0, 0.01]
+				},
+				"Arm7": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"1.5": {
+							"vector": [0, 0, 22.5],
+							"easing": "easeInOutSine"
+						},
+						"3.0": {
+							"vector": [0, 0, 0],
+							"easing": "easeInOutSine"
+						}
+					}
+				},
+				"Arm8": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, -11.25]
+						},
+						"1.5": {
+							"vector": [0, 0, -45],
+							"easing": "easeInOutSine"
+						},
+						"3.0": {
+							"vector": [0, 0, -11.25],
+							"easing": "easeInOutSine"
+						}
+					}
+				},
+				"Cog3": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"3.0": {
+							"vector": [0, 0, -360]
+						}
+					}
+				},
+				"Arm10": {
+					"relative_to": {
+						"rotation": "entity"
+					},
+					"rotation": [0, 0, 0.01]
+				},
+				"Arm11": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"1.5": {
+							"vector": [0, 0, -22.5],
+							"easing": "easeInOutSine"
+						},
+						"3.0": {
+							"vector": [0, 0, 0],
+							"easing": "easeInOutSine"
+						}
+					}
+				},
+				"Arm12": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 11.25]
+						},
+						"1.5": {
+							"vector": [0, 0, 45],
+							"easing": "easeInOutSine"
+						},
+						"3.0": {
+							"vector": [0, 0, 11.25],
+							"easing": "easeInOutSine"
+						}
+					}
+				},
+				"Cog4": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"3.0": {
+							"vector": [0, 0, 360]
+						}
+					}
+				}
+			}
+		},
+		"omnissian_altar.ritual_loop": {
+			"loop": true,
+			"animation_length": 3,
+			"bones": {
+				"Arm2": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 45]
+						},
+						"1.5": {
+							"vector": [0, 0, 80],
+							"easing": "easeInOutSine"
+						},
+						"3.0": {
+							"vector": [0, 0, 45],
+							"easing": "easeInOutSine"
+						}
+					}
+				},
+				"Arm9": {
+					"relative_to": {
+						"rotation": "entity"
+					},
+					"rotation": [0, 0, 0.01]
+				},
+				"Cog1": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"3.0": {
+							"vector": [0, 0, 360]
+						}
+					}
+				},
+				"Arm1": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, -22.5]
+						},
+						"1.5": {
+							"vector": [0, 0, -45],
+							"easing": "easeInOutSine"
+						},
+						"3.0": {
+							"vector": [0, 0, -22.5],
+							"easing": "easeInOutSine"
+						}
+					}
+				},
+				"Arm3": {
+					"relative_to": {
+						"rotation": "entity"
+					},
+					"rotation": [0, 0, 0.01]
+				},
+				"Arm4": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 22.5]
+						},
+						"1.5": {
+							"vector": [0, 0, 45],
+							"easing": "easeInOutSine"
+						},
+						"3.0": {
+							"vector": [0, 0, 22.5],
+							"easing": "easeInOutSine"
+						}
+					}
+				},
+				"Arm5": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, -45]
+						},
+						"1.5": {
+							"vector": [0, 0, -80],
+							"easing": "easeInOutSine"
+						},
+						"3.0": {
+							"vector": [0, 0, -45],
+							"easing": "easeInOutSine"
+						}
+					}
+				},
+				"Cog2": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"3.0": {
+							"vector": [0, 0, -360]
+						}
+					}
+				},
+				"Arm6": {
+					"relative_to": {
+						"rotation": "entity"
+					},
+					"rotation": [0, 0, 0.01]
+				},
+				"Arm7": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 22.5]
+						},
+						"1.5": {
+							"vector": [0, 0, 45],
+							"easing": "easeInOutSine"
+						},
+						"3.0": {
+							"vector": [0, 0, 22.5],
+							"easing": "easeInOutSine"
+						}
+					}
+				},
+				"Arm8": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, -45]
+						},
+						"1.5": {
+							"vector": [0, 0, -80],
+							"easing": "easeInOutSine"
+						},
+						"3.0": {
+							"vector": [0, 0, -45],
+							"easing": "easeInOutSine"
+						}
+					}
+				},
+				"Cog3": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"3.0": {
+							"vector": [0, 0, -360]
+						}
+					}
+				},
+				"Arm10": {
+					"relative_to": {
+						"rotation": "entity"
+					},
+					"rotation": [0, 0, 0.01]
+				},
+				"Arm11": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, -22.5]
+						},
+						"1.5": {
+							"vector": [0, 0, -45],
+							"easing": "easeInOutSine"
+						},
+						"3.0": {
+							"vector": [0, 0, -22.5],
+							"easing": "easeInOutSine"
+						}
+					}
+				},
+				"Arm12": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 45]
+						},
+						"1.5": {
+							"vector": [0, 0, 80],
+							"easing": "easeInOutSine"
+						},
+						"3.0": {
+							"vector": [0, 0, 45],
+							"easing": "easeInOutSine"
+						}
+					}
+				},
+				"Cog4": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"3.0": {
+							"vector": [0, 0, 360]
+						}
+					}
+				}
+			}
+		},
+		"omnissian_altar.idle_loop": {
+			"loop": true
+		}
+	},
+	"geckolib_format_version": 2
+}

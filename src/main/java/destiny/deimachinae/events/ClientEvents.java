@@ -1,5 +1,7 @@
 package destiny.deimachinae.events;
 
+import destiny.deimachinae.client.renderer.block.OmnissianAltarBlockRenderer;
+import destiny.deimachinae.init.BlockEntityInit;
 import destiny.deimachinae.init.FluidInit;
 import destiny.deimachinae.init.ItemInit;
 import destiny.deimachinae.items.properties.OmnispexItemProperty;
@@ -21,6 +23,7 @@ import static destiny.deimachinae.DeiMachinaeMod.MODID;
 public class ClientEvents {
     @SubscribeEvent
     public static void registerRenderers(final EntityRenderersEvent.RegisterRenderers event) {
+        event.registerBlockEntityRenderer(BlockEntityInit.OMNISSIAN_ALTAR.get(), context -> new OmnissianAltarBlockRenderer());
     }
 
     @SubscribeEvent

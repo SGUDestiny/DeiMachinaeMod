@@ -4,6 +4,7 @@ import destiny.deimachinae.DeiMachinaeMod;
 import destiny.deimachinae.blocks.AncientCryptBlock;
 import destiny.deimachinae.blocks.HorizontalWallBlock;
 import destiny.deimachinae.blocks.IncenseBurnerBlock;
+import destiny.deimachinae.blocks.OmnissianAltarBlock;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
@@ -22,7 +23,9 @@ import static destiny.deimachinae.blocks.IncenseBurnerBlock.LIT;
 public class BlockInit {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, DeiMachinaeMod.MODID);
 
-    public static final RegistryObject<Block> ANCIENT_CRYPT = BLOCKS.register("ancient_crypt", () -> new AncientCryptBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_YELLOW).strength(5.0F).sound(SoundType.COPPER).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> OMNISSIAN_ALTAR = registerBlock("omnissian_altar", () -> new OmnissianAltarBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_YELLOW).strength(5.0F).sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()));
+
+    public static final RegistryObject<Block> ANCIENT_CRYPT = BLOCKS.register("ancient_crypt", () -> new AncientCryptBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_YELLOW).strength(5.0F).sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()));
     public static final RegistryObject<Block> IMPERIAL_AQUILA = BLOCKS.register("imperial_aquila", () -> new HorizontalWallBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_YELLOW).strength(2.0F).sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()));
     public static final RegistryObject<Block> COG_MECHANICUM = BLOCKS.register("cog_mechanicum", () -> new HorizontalWallBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_YELLOW).strength(2.0F).sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()));
     public static final RegistryObject<Block> INCENSE_BURNER = BLOCKS.register("incense_burner", () -> new IncenseBurnerBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_YELLOW).strength(2.0F).sound(SoundType.LANTERN).requiresCorrectToolForDrops().noOcclusion().lightLevel((state) -> state.getValue(LIT) ? 5 : 0)));
