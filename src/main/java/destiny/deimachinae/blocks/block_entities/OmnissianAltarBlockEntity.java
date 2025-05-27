@@ -3,6 +3,7 @@ package destiny.deimachinae.blocks.block_entities;
 import destiny.deimachinae.init.BlockEntityInit;
 import destiny.deimachinae.init.SoundInit;
 import destiny.deimachinae.items.MachineSpiritItem;
+import net.minecraft.client.renderer.entity.ItemEntityRenderer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
