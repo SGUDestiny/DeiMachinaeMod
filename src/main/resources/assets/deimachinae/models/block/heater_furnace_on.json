@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "north": "deimachinae:block/heater_furnace_front_on",
+    "south": "deimachinae:block/heater_furnace_side",
+    "east": "deimachinae:block/heater_furnace_side",
+    "west": "deimachinae:block/heater_furnace_side",
+    "up": "deimachinae:block/heater_furnace_top_on",
+    "down": "deimachinae:block/heater_furnace_bottom",
+    "particle": "deimachinae:block/heater_furnace_front_on"
+  }
+}

@@ -58,11 +58,16 @@ public class OmnissianAltarBlockEntity extends BlockEntity implements GeoBlockEn
 
     public static void tick(Level level, BlockPos pos, BlockState state, OmnissianAltarBlockEntity altar) {
         if (!level.isClientSide()) {
-            soundHandling(level, pos, state, altar);
+            ritualHandling(level, pos, state, altar);
+            soundHandling(level, pos, altar);
         }
     }
 
-    public static void soundHandling(Level level, BlockPos pos, BlockState state, OmnissianAltarBlockEntity altar) {
+    public static void ritualHandling(Level level, BlockPos pos, BlockState state, OmnissianAltarBlockEntity altar) {
+        
+    }
+
+    public static void soundHandling(Level level, BlockPos pos, OmnissianAltarBlockEntity altar) {
         if (altar.inputSlot.getStackInSlot(0).getItem() instanceof MachineSpiritItem) {
             if (altar.soundTicker >= 40) {
                 level.playSound(null, pos, SoundInit.MACHINERY_ACTIVE.get(), SoundSource.BLOCKS, 0.1f, 1.0f);

@@ -1,10 +1,7 @@
 package destiny.deimachinae.init;
 
 import destiny.deimachinae.DeiMachinaeMod;
-import destiny.deimachinae.blocks.AncientCryptBlock;
-import destiny.deimachinae.blocks.HorizontalWallBlock;
-import destiny.deimachinae.blocks.IncenseBurnerBlock;
-import destiny.deimachinae.blocks.OmnissianAltarBlock;
+import destiny.deimachinae.blocks.*;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
@@ -24,6 +21,8 @@ public class BlockInit {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, DeiMachinaeMod.MODID);
 
     public static final RegistryObject<Block> OMNISSIAN_ALTAR = registerBlock("omnissian_altar", () -> new OmnissianAltarBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_YELLOW).strength(5.0F).sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()));
+    public static final RegistryObject<Block> HEATER_FURNACE = registerBlock("heater_furnace", () -> new HeaterFurnace(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_YELLOW).strength(5.0F).sound(SoundType.COPPER).requiresCorrectToolForDrops().lightLevel((state) -> state.getValue(LIT) ? 14 : 0)));
+    public static final RegistryObject<Block> COLUMN_BOILER = registerBlock("column_boiler", () -> new ColumnBoilerBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_YELLOW).strength(5.0F).sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion().lightLevel((state) -> state.getValue(LIT) ? 10 : 0)));
 
     public static final RegistryObject<Block> ANCIENT_CRYPT = BLOCKS.register("ancient_crypt", () -> new AncientCryptBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_YELLOW).strength(5.0F).sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()));
     public static final RegistryObject<Block> IMPERIAL_AQUILA = BLOCKS.register("imperial_aquila", () -> new HorizontalWallBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_YELLOW).strength(2.0F).sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()));

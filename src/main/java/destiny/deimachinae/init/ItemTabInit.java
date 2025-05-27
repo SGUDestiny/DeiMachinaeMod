@@ -4,7 +4,6 @@ import destiny.deimachinae.DeiMachinaeMod;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
@@ -19,6 +18,8 @@ public class ItemTabInit {
                     .displayItems(((itemDisplayParameters, output) -> {
                         //Machines
                         output.accept(BlockInit.OMNISSIAN_ALTAR.get());
+                        output.accept(BlockInit.HEATER_FURNACE.get());
+                        output.accept(BlockInit.COLUMN_BOILER.get());
 
                         //Tools
                         output.accept(ItemInit.OMNISPEX.get());
