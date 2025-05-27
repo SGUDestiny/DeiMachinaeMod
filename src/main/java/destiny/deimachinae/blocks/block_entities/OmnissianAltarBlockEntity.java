@@ -36,7 +36,7 @@ import javax.annotation.Nonnull;
 public class OmnissianAltarBlockEntity extends BlockEntity implements GeoBlockEntity {
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
 
-    private int soundTicker = 80;
+    private int soundTicker = 40;
     public int craftingTicks = 0;
     public final ItemStackHandler inputSlot;
     private final LazyOptional<IItemHandler> inputHandler;
@@ -64,14 +64,14 @@ public class OmnissianAltarBlockEntity extends BlockEntity implements GeoBlockEn
 
     public static void soundHandling(Level level, BlockPos pos, BlockState state, OmnissianAltarBlockEntity altar) {
         if (altar.inputSlot.getStackInSlot(0).getItem() instanceof MachineSpiritItem) {
-            if (altar.soundTicker >= 80) {
+            if (altar.soundTicker >= 40) {
                 level.playSound(null, pos, SoundInit.MACHINERY_ACTIVE.get(), SoundSource.BLOCKS, 0.1f, 1.0f);
                 altar.soundTicker = 0;
             } else {
                 altar.soundTicker++;
             }
         } else {
-            altar.soundTicker = 80;
+            altar.soundTicker = 40;
         }
     }
 

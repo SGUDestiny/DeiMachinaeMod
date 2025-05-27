@@ -2,6 +2,7 @@ package destiny.deimachinae.blocks;
 
 import destiny.deimachinae.blocks.block_entities.OmnissianAltarBlockEntity;
 import destiny.deimachinae.init.BlockEntityInit;
+import destiny.deimachinae.util.MathUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionHand;
@@ -9,6 +10,7 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
@@ -20,9 +22,20 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class OmnissianAltarBlock extends BaseEntityBlock {
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
+    public static final VoxelShape SHAPE = MathUtil.buildShape(
+            Block.box(0, 0, 0, 16, 6, 16),
+            Block.box(3, 6, 3, 13, 10, 13),
+            Block.box(2, 10, 2, 14, 12, 14),
+            Block.box(-1, 0, -1, 3, 8, 3),
+            Block.box(13, 0, -1, 17, 8, 3),
+            Block.box(13, 0, 13, 17, 8, 17),
+            Block.box(-1, 0, 13, 3, 8, 17)
+    );
 
     public OmnissianAltarBlock(Properties pProperties) {
         super(pProperties);
@@ -66,6 +79,11 @@ public class OmnissianAltarBlock extends BaseEntityBlock {
     @javax.annotation.Nullable
     public BlockState getStateForPlacement(BlockPlaceContext pContext) {
         return this.defaultBlockState().setValue(FACING, pContext.getHorizontalDirection().getOpposite());
+    }
+
+    @Override
+    public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
+        return SHAPE;
     }
 
     @org.jetbrains.annotations.Nullable

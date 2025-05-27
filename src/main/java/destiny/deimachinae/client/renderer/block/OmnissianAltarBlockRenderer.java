@@ -39,7 +39,7 @@ public class OmnissianAltarBlockRenderer extends GeoBlockRenderer<OmnissianAltar
 
         poseStack.pushPose();
         float time = (level.getGameTime() + partialTicks) * 0.8f;
-        float yOffset = Mth.sin(time * 0.1f) * 0.15f;
+        float yOffset = Mth.sin(time * 0.1f) * 0.1f + 0.1f;
 
         poseStack.translate(0, 1 + yOffset, 0);
         poseStack.mulPose(Axis.YP.rotation(time * 0.0575f));
