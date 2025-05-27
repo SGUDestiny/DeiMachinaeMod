@@ -61,6 +61,20 @@
         },
         {
           "type": "minecraft:item",
+          "name": "deimachinae:scrap_pile",
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 3,
+                "max": 5
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
           "name": "deimachinae:oil_flask",
           "functions": [
             {
@@ -69,6 +83,7 @@
             }
           ]
         },
+
         {
           "type": "minecraft:item",
           "name": "minecraft:iron_ingot",
