@@ -1,8 +1,10 @@
 package destiny.deimachinae.blocks;
 
+import destiny.deimachinae.util.MathUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
@@ -11,11 +13,16 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.material.Fluids;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class ColumnBoilerBlock extends Block {
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
     public static final BooleanProperty LIT = BlockStateProperties.LIT;
+    public static final VoxelShape SHAPE = MathUtil.buildShape(
+            Block.box(1, 0, 1, 15, 16, 15)
+    );
 
     public ColumnBoilerBlock(Properties pProperties) {
         super(pProperties);
@@ -34,6 +41,11 @@ public class ColumnBoilerBlock extends Block {
         BlockState blockState = accessor.getBlockState(pos.below());
         return this.defaultBlockState().setValue(WATERLOGGED, accessor.getFluidState(pos).getType() == Fluids.WATER)
                 .setValue(FACING, blockState.getBlock() instanceof ColumnBoilerBlock ? blockState.getValue(FACING).getOpposite() : context.getHorizontalDirection().getOpposite());
+    }
+
+    @Override
+    public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
+        return SHAPE;
     }
 
     @Override

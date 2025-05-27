@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 100,
+  "experience": 0.8,
+  "group": "archeobrass_ingot",
+  "ingredient": {
+    "item": "deimachinae:scrap_pile"
+  },
+  "result": "deimachinae:archeobrass_ingot"
+}
