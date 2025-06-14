@@ -15,7 +15,7 @@
   "item.deimachinae.noctilith_shard": "Noctilith Shard",
 
   "item.deimachinae.oil_coke": "Oil Coke",
-  "item.deimachinae.oil_bucket": "Oil Bucket",
+  "item.deimachinae.celestial_oil_bucket": "Celestial Oil Bucket",
 
   "_components": "Components",
   "item.deimachinae.cogitator": "Cogitator",
@@ -36,6 +36,8 @@
 
   "item.deimachinae.oil_flask": "Oil Flask",
 
+  "item.deimachinae.machinal_essence": "Machinal Essence",
+
   "_blocks": "Blocks",
   "block.deimachinae.archeobrass_block": "Archeobrass Block",
   "block.deimachinae.ancient_crypt": "Ancient Crypt",
@@ -46,7 +48,7 @@
   "block.deimachinae.noctilith_ore": "Noctilith Ore",
   "block.deimachinae.scrap_pile": "Scrap Pile",
 
-  "block.deimachinae.oil": "Oil",
+  "block.deimachinae.celestial_oil": "Celestial Oil",
   "block.deimachinae.oil_coke_block": "Oil Coke Block",
 
   "block.deimachinae.omnissian_altar": "Omnissian Altar",

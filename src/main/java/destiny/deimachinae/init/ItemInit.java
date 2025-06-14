@@ -32,7 +32,7 @@ public class ItemInit {
 
     public static final RegistryObject<Item> OIL_COKE = ITEMS.register("oil_coke", () -> new FuelItem(new Item.Properties(), 3200));
     public static final RegistryObject<Item> OIL_COKE_BLOCK = ITEMS.register("oil_coke_block", () -> new FuelBlockItem(BlockInit.OIL_COKE_BLOCK.get(), new Item.Properties(), 28800));
-    public static final RegistryObject<Item> OIL_BUCKET = ITEMS.register("oil_bucket", () -> new BucketItem(FluidInit.SOURCE_OIL.get(), new Item.Properties().stacksTo(1).craftRemainder(Items.BUCKET)));
+    public static final RegistryObject<Item> CELESTIAL_OIL_BUCKET = ITEMS.register("celestial_oil_bucket", () -> new BucketItem(FluidInit.SOURCE_CELESTIAL_OIL.get(), new Item.Properties().stacksTo(1).craftRemainder(Items.BUCKET)));
 
     //Components
     public static final RegistryObject<Item> COGITATOR = ITEMS.register("cogitator", () -> new Item(new Item.Properties()));
@@ -52,6 +52,8 @@ public class ItemInit {
     public static final RegistryObject<Item> PURITY_SEAL = ITEMS.register("purity_seal", () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> OIL_FLASK = ITEMS.register("oil_flask", () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> MACHINAL_ESSENCE = ITEMS.register("machinal_essence", () -> new Item(new Item.Properties()));
 
     //Block Items
     public static final RegistryObject<Item> ANCIENT_CRYPT = ITEMS.register("ancient_crypt", () -> new AncientCryptBlockItem(new Item.Properties()));

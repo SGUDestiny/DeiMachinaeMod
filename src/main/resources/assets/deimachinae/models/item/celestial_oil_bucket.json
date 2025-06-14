@@ -1,6 +1,6 @@
 {
 	"parent": "minecraft:item/generated",
 	"textures": {
-		"layer0": "deimachinae:item/oil_bucket"
+		"layer0": "deimachinae:item/celestial_oil_bucket"
 	}
 }

@@ -33,8 +33,8 @@ public class BlockInit {
     public static final RegistryObject<Block> SCRAP_PILE = registerBlock("scrap_pile", () -> new FallingBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_YELLOW).strength(4.0F).sound(SoundType.ANCIENT_DEBRIS).requiresCorrectToolForDrops().noOcclusion()));
     public static final RegistryObject<Block> NOCTILITH_ORE = registerBlock("noctilith_ore", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_YELLOW).strength(5.0F).sound(SoundType.GILDED_BLACKSTONE).requiresCorrectToolForDrops().explosionResistance(1000)));
 
-    public static final RegistryObject<LiquidBlock> OIL = BLOCKS.register("oil",
-            () -> new LiquidBlock(FluidInit.SOURCE_OIL, BlockBehaviour.Properties.copy(Blocks.WATER).noLootTable()));
+    public static final RegistryObject<LiquidBlock> CELESTIAL_OIL = BLOCKS.register("celestial_oil",
+            () -> new LiquidBlock(FluidInit.SOURCE_CELESTIAL_OIL, BlockBehaviour.Properties.copy(Blocks.WATER).noLootTable()));
 
     public static final RegistryObject<Block> OIL_COKE_BLOCK = BLOCKS.register("oil_coke_block", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(5.0F, 6.0F)));
 

@@ -47,7 +47,7 @@
                 },
                 {
                   "type": "minecraft:item",
-                  "name": "deimachinae:redstone_filament"
+                  "name": "deimachinae:scrap_pile"
                 }
               ],
               "conditions": [

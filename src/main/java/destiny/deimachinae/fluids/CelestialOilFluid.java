@@ -14,15 +14,15 @@ import org.joml.Vector3f;
 import javax.annotation.Nullable;
 import java.util.function.Consumer;
 
-public class OilFluid extends FluidType {
+public class CelestialOilFluid extends FluidType {
     private final ResourceLocation stillTexture;
     private final ResourceLocation flowingTexture;
     private final ResourceLocation overlayTexture;
     private final int tintColor;
     private final Vector3f fogColor;
 
-    public OilFluid(final ResourceLocation stillTexture, final ResourceLocation flowingTexture, final ResourceLocation overlayTexture,
-                    final int tintColor, final Vector3f fogColor, final Properties properties) {
+    public CelestialOilFluid(final ResourceLocation stillTexture, final ResourceLocation flowingTexture, final ResourceLocation overlayTexture,
+                             final int tintColor, final Vector3f fogColor, final Properties properties) {
         super(properties);
         this.stillTexture = stillTexture;
         this.flowingTexture = flowingTexture;

@@ -35,7 +35,7 @@ public class ClientEvents {
 
     @SubscribeEvent
     public static void onClientSetup(FMLClientSetupEvent event) {
-        ItemBlockRenderTypes.setRenderLayer(FluidInit.SOURCE_OIL.get(), RenderType.solid());
+        ItemBlockRenderTypes.setRenderLayer(FluidInit.SOURCE_CELESTIAL_OIL.get(), RenderType.solid());
 
         event.enqueueWork(() -> {
             ItemProperties.register(ItemInit.OMNISPEX.get(), new ResourceLocation(MODID, "omnispex_ping"), new OmnispexItemProperty());
