@@ -47,11 +47,6 @@ public class ItemTabInit {
 
                         output.accept(ItemInit.INCENSE_BURNER.get());
 
-                        //Materials
-                        output.accept(ItemInit.OIL_FLASK.get());
-
-                        output.accept(ItemInit.MACHINAL_ESSENCE.get());
-
                         output.accept(ItemInit.IMPERIAL_AQUILA.get());
                         output.accept(ItemInit.COG_MECHANICUM.get());
                     })).build());
@@ -66,6 +61,10 @@ public class ItemTabInit {
                         output.accept(ItemInit.OIL_COKE.get());
                         output.accept(ItemInit.OIL_COKE_BLOCK.get());
                         output.accept(ItemInit.CELESTIAL_OIL_BUCKET.get());
+                        output.accept(ItemInit.OIL_FLASK.get());
+
+                        output.accept(ItemInit.MACHINAL_ESSENCE.get());
+                        output.accept(ItemInit.CRUDE_GREASE.get());
 
                         output.accept(ItemInit.NOCTILITH_SHARD.get());
                         output.accept(BlockInit.NOCTILITH_ORE.get());
