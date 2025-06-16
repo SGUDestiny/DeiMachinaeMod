@@ -26,6 +26,7 @@ public class DeiMachinaeMod {
         SoundInit.register(modEventBus);
         FluidInit.register(modEventBus);
         FluidTypeInit.register(modEventBus);
+        RecipeTypeInit.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
         MinecraftForge.EVENT_BUS.register(this);

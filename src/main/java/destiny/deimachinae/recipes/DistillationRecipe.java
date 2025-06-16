@@ -1,198 +1,190 @@
 package destiny.deimachinae.recipes;
 
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
+import com.google.gson.*;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.JsonOps;
+import com.mojang.serialization.codecs.PrimitiveCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import destiny.deimachinae.DeiMachinaeMod;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.RegistryAccess;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.GsonHelper;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.common.crafting.CraftingHelper;
 import net.minecraftforge.items.wrapper.RecipeWrapper;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class DistillationRecipe implements Recipe<RecipeWrapper> {
-    public static final int MAX_RESULTS = 3;
 
-    private final ResourceLocation id;
-    private final Ingredient input;
-    private final NonNullList<ItemStack> results;
+    public static final Codec<Ingredient> INGREDIENT_CODEC = new PrimitiveCodec<>()
+    {
+        @Override
+        public <T> DataResult<Ingredient> read(DynamicOps<T> ops, T input)
+        {
+            try
+            {
+                return DataResult.success(CraftingHelper.getIngredient(ops.convertTo(JsonOps.INSTANCE, input).getAsJsonObject(), false));
+            } catch (JsonSyntaxException error)
+            {
+                return DataResult.error(error::getMessage);
+            }
+        }
 
-    public DistillationRecipe(ResourceLocation id, Ingredient input, NonNullList<ItemStack> results) {
+        @Override
+        public <T> T write(DynamicOps<T> ops, Ingredient value)
+        {
+            return JsonOps.INSTANCE.convertTo(ops, value.toJson());
+        }
+    };
+
+    public static final Codec<ItemStack> STACK_CODEC = RecordCodecBuilder.create(instance -> instance.group(
+            BuiltInRegistries.ITEM.byNameCodec().fieldOf("item").forGetter(ItemStack::getItem),
+            Codec.INT.fieldOf("amount").forGetter(ItemStack::getCount),
+            CompoundTag.CODEC.optionalFieldOf("tag").forGetter(stack -> Optional.ofNullable(stack.getTag()))
+    ).apply(instance, DistillationRecipe::createStack));
+
+    public static ItemStack createStack(Item item, int amount, Optional<CompoundTag> tag)
+    {
+        CompoundTag nbt = tag.orElse(null);
+        return new ItemStack(item, amount, nbt);
+    }
+
+    public static final Codec<DistillationRecipe> CODEC = RecordCodecBuilder.create(instance -> instance.group(
+            INGREDIENT_CODEC.fieldOf("ingredient").forGetter(DistillationRecipe::getInput),
+            STACK_CODEC.listOf().fieldOf("result").forGetter(DistillationRecipe::getResults)
+    ).apply(instance, DistillationRecipe::new));
+
+    public ResourceLocation id;
+    public Ingredient input;
+    public List<ItemStack> results;
+    public DistillationRecipe(Ingredient input, List<ItemStack> outputs)
+    {
+        this.input = input;
+        this.results = outputs;
+    }
+
+    public DistillationRecipe(ResourceLocation id, Ingredient input, List<ItemStack> outputs)
+    {
         this.id = id;
         this.input = input;
-        this.results = results;
+        this.results = outputs;
     }
 
-    @Override
-    public boolean isSpecial() {
-        return true;
+
+    public Ingredient getInput()
+    {
+        return input;
     }
 
-    @Override
-    public ResourceLocation getId() {
-        return this.id;
-    }
-
-    @Override
-    public NonNullList<Ingredient> getIngredients() {
-        NonNullList<Ingredient> nonnulllist = NonNullList.create();
-        nonnulllist.add(this.input);
-        return nonnulllist;
-    }
-
-    @Override
-    public ItemStack assemble(RecipeWrapper inv, RegistryAccess access) {
-        return this.results.get(0).getStack().copy();
-    }
-
-    @Override
-    public ItemStack getResultItem(RegistryAccess access) {
-        return this.results.get(0).getStack();
-    }
-
-    public List<ItemStack> getResults() {
-        return getRollableResults().stream()
-                .map(ItemStack::getItem)
-                .collect(Collectors.toList());
-    }
-
-    public NonNullList<ItemStack> getRollableResults() {
-        return this.results;
-    }
-
-    public List<ItemStack> rollResults(RandomSource rand, int fortuneLevel) {
-        List<ItemStack> results = new ArrayList<>();
-        NonNullList<ItemStack> rollableResults = getRollableResults();
-        for (ItemStack output : rollableResults) {
-            ItemStack stack = output.rollOutput(rand, fortuneLevel);
-            if (!stack.isEmpty())
-                results.add(stack);
-        }
+    public List<ItemStack> getResults()
+    {
         return results;
     }
 
     @Override
-    public boolean matches(RecipeWrapper inv, Level level) {
-        if (inv.isEmpty())
-            return false;
-        return input.test(inv.getItem(0));
-    }
-
-    protected int getMaxInputCount() {
-        return 1;
+    public boolean matches(RecipeWrapper container, Level pLevel)
+    {
+        //DO THIS PART
+        return this.input.test(container.getInput());
     }
 
     @Override
-    public boolean canCraftInDimensions(int width, int height) {
-        return width * height >= this.getMaxInputCount();
+    public ItemStack assemble(RecipeWrapper pContainer, RegistryAccess pRegistryAccess)
+    {
+        return results.get(0).copy();
     }
 
     @Override
-    public RecipeSerializer<?> getSerializer() {
-        return ModRecipeSerializers.DISTILLATION.get();
-    }
-
-    @Override
-    public RecipeType<?> getType() {
-        return ModRecipeTypes.DISTILLATION.get();
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        DistillationRecipe that = (DistillationRecipe) o;
-
-        if (!getId().equals(that.getId())) return false;
-        if (!getGroup().equals(that.getGroup())) return false;
-        if (!input.equals(that.input)) return false;
-        if (!getResults().equals(that.getResults())) return false;
+    public boolean canCraftInDimensions(int pWidth, int pHeight)
+    {
         return true;
     }
 
     @Override
-    public int hashCode() {
-        int result = getId().hashCode();
-        result = 31 * result + (getGroup() != null ? getGroup().hashCode() : 0);
-        result = 31 * result + input.hashCode();
-        result = 31 * result + getResults().hashCode();
-        return result;
+    public ItemStack getResultItem(RegistryAccess pRegistryAccess)
+    {
+        return results.get(0).copy();
+    }
+
+    @Override
+    public ResourceLocation getId()
+    {
+        return this.id;
+    }
+
+    @Override
+    public RecipeSerializer<?> getSerializer()
+    {
+        return Serializer.INSTANCE;
+    }
+
+    @Override
+    public RecipeType<?> getType()
+    {
+        return Type.INSTANCE;
+    }
+
+    public static class Type implements RecipeType<DistillationRecipe>
+    {
+        public static final Type INSTANCE = new Type();
+        public static final String ID = "distillation";
+
+        private Type()
+        {
+
+        }
     }
 
     public static class Serializer implements RecipeSerializer<DistillationRecipe>
     {
-        public Serializer() {
+        public static final Serializer INSTANCE = new Serializer();
+        public static final ResourceLocation ID = new ResourceLocation(DeiMachinaeMod.MODID, "distillation");
+
+        @Override
+        public DistillationRecipe fromJson(ResourceLocation recipeID, JsonObject jsonRecipe)
+        {
+            DistillationRecipe recipe = DistillationRecipe.CODEC.parse(JsonOps.INSTANCE, jsonRecipe)
+                    .getOrThrow(false,
+                            s -> {
+                                throw new JsonParseException(s);
+                            });
+
+            return new DistillationRecipe(recipeID, recipe.input, recipe.results);
         }
 
         @Override
-        public DistillationRecipe fromJson(ResourceLocation recipeId, JsonObject json) {
-            final NonNullList<Ingredient> inputItemsIn = readIngredients(GsonHelper.getAsJsonArray(json, "ingredients"));
-            if (inputItemsIn.isEmpty()) {
-                throw new JsonParseException("No ingredients for distillation recipe");
-            } else if (inputItemsIn.size() > 1) {
-                throw new JsonParseException("Too many ingredients for distillation recipe!");
-            } else {
-                final NonNullList<ItemStack> results = readResults(GsonHelper.getAsJsonArray(json, "result"));
-                if (results.size() > 3) {
-                    throw new JsonParseException("Too many results for distillation recipe!");
-                } else {
-                    return new DistillationRecipe(recipeId, inputItemsIn.get(0), results);
-                }
-            }
-        }
+        public @Nullable DistillationRecipe fromNetwork(ResourceLocation recipeID, FriendlyByteBuf buffer)
+        {
+            Ingredient input = Ingredient.fromNetwork(buffer);
+            List<ItemStack> results = buffer.readCollection(i -> new ArrayList<>(), FriendlyByteBuf::readItem);
 
-        private static NonNullList<Ingredient> readIngredients(JsonArray ingredientArray) {
-            NonNullList<Ingredient> nonnulllist = NonNullList.create();
-            for (int i = 0; i < ingredientArray.size(); ++i) {
-                Ingredient ingredient = Ingredient.fromJson(ingredientArray.get(i));
-                if (!ingredient.isEmpty()) {
-                    nonnulllist.add(ingredient);
-                }
-            }
-            return nonnulllist;
-        }
-
-        private static NonNullList<ItemStack> readResults(JsonArray resultArray) {
-            NonNullList<ItemStack> results = NonNullList.create();
-            for (JsonElement result : resultArray) {
-                results.add(ItemStack.deserialize(result));
-            }
-            return results;
-        }
-
-        @Nullable
-        @Override
-        public DistillationRecipe fromNetwork(ResourceLocation recipeId, FriendlyByteBuf buffer) {
-            Ingredient inputItemIn = Ingredient.fromNetwork(buffer);
-            int i = buffer.readVarInt();
-            NonNullList<ItemStack> resultsIn = NonNullList.withSize(i, ItemStack.EMPTY);
-            for (int j = 0; j < resultsIn.size(); ++j) {
-                resultsIn.set(j, buffer.readItem());
-            }
-            return new DistillationRecipe(recipeId, inputItemIn, resultsIn);
+            return new DistillationRecipe(recipeID, input, results);
         }
 
         @Override
-        public void toNetwork(FriendlyByteBuf buffer, DistillationRecipe recipe) {
+        public void toNetwork(FriendlyByteBuf buffer, DistillationRecipe recipe)
+        {
             recipe.input.toNetwork(buffer);
-            buffer.writeVarInt(recipe.results.size());
-            for (ItemStack result : recipe.getResults()) {
-                buffer.writeItemStack(result, false);
-            }
+            recipe.results.forEach(buffer::writeItem);
         }
     }
 }
