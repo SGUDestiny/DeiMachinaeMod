@@ -73,7 +73,7 @@ public class OmnispexItem extends Item {
 
         setDefaults(stack);
 
-        //If crouching, select clicked block
+        //If crouching, select clicked block_items
         if (player.isCrouching()) {
             Level level = pContext.getLevel();
             BlockPos pos = pContext.getClickedPos();
@@ -82,7 +82,7 @@ public class OmnispexItem extends Item {
 
             stack.getTag().putString(SELECTED_BLOCK, selected_block);
             level.playSound(null, pos, SoundInit.OMNISPEX_SELECT.get(), SoundSource.PLAYERS);
-            player.displayClientMessage(Component.literal("Selected block: " + selected_block), true);
+            player.displayClientMessage(Component.literal("Selected block_items: " + selected_block), true);
 
             return InteractionResult.SUCCESS;
         }

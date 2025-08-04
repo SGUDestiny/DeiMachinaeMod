@@ -2,10 +2,10 @@ package destiny.deimachinae.init;
 
 import destiny.deimachinae.DeiMachinaeMod;
 import destiny.deimachinae.items.*;
-import destiny.deimachinae.items.block.AncientCryptBlockItem;
-import destiny.deimachinae.items.block.FuelBlockItem;
-import destiny.deimachinae.items.block.HorizontalWallBlockItem;
-import destiny.deimachinae.items.block.IncenseBurnerBlockItem;
+import destiny.deimachinae.items.block_items.AncientCryptBlockItem;
+import destiny.deimachinae.items.block_items.FuelBlockItem;
+import destiny.deimachinae.items.block_items.HorizontalWallBlockItem;
+import destiny.deimachinae.items.block_items.IncenseBurnerBlockItem;
 import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
