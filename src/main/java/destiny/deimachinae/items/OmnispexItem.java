@@ -22,6 +22,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
@@ -32,6 +33,7 @@ public class OmnispexItem extends Item {
     public static final String POWER = "power";
     public static final String ANIMATION_FRAME = "animation_frame";
     public static final String DISTANCE = "distance";
+    public static final String FOUND_BLOCK = "found_block";
     public static final String SELECTED_BLOCK = "selected_block";
     private int animationTicker = 0;
     private int searchTicker = 0;
@@ -43,27 +45,49 @@ public class OmnispexItem extends Item {
 
     @Override
     public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pUsedHand) {
-        ItemStack stack = pPlayer.getItemInHand(pUsedHand);
+        ItemStack stack = pPlayer.getMainHandItem();
 
         setDefaults(stack);
 
         //If not crouching, switch on state
         if (!pPlayer.isCrouching()) {
-            boolean power = !stack.getTag().getBoolean(POWER);
-            stack.getTag().putBoolean(POWER, power);
+            boolean power = stack.getTag().getBoolean(POWER);
 
-            if (power) {
-                pLevel.playSound(null, pPlayer.getOnPos().above(), SoundInit.TECH_ON.get(), SoundSource.PLAYERS);
-                pPlayer.displayClientMessage(Component.literal("Device activated"), true);
+            if (!power) {
+                if (isOnlyOmnispex(pPlayer)) {
+                    pLevel.playSound(null, pPlayer.getOnPos().above(), SoundInit.TECH_ON.get(), SoundSource.PLAYERS);
+                    pPlayer.displayClientMessage(Component.literal("Device activated"), true);
+                }
             } else {
                 pLevel.playSound(null, pPlayer.getOnPos().above(), SoundInit.TECH_OFF.get(), SoundSource.PLAYERS);
                 pPlayer.displayClientMessage(Component.literal("Device deactivated"), true);
             }
 
+            stack.getTag().putBoolean(POWER, !power);
+
             return InteractionResultHolder.success(stack);
         }
 
         return InteractionResultHolder.pass(stack);
+    }
+
+    public boolean isOnlyOmnispex(Player player) {
+        int activeAmount = 0;
+
+        for (ItemStack inventoryStack : player.getInventory().items) {
+            if (inventoryStack.getItem() instanceof OmnispexItem) {
+                if (inventoryStack.getTag() != null) {
+                    if (inventoryStack.getTag().getBoolean(POWER)) {
+                        activeAmount++;
+                    }
+                }
+            }
+            if (activeAmount > 1) {
+                player.displayClientMessage(Component.literal("Only one Omnispex can be active at the same time!"), true);
+                return false;
+            }
+        }
+        return true;
     }
 
     @Override
@@ -82,7 +106,7 @@ public class OmnispexItem extends Item {
 
             stack.getTag().putString(SELECTED_BLOCK, selected_block);
             level.playSound(null, pos, SoundInit.OMNISPEX_SELECT.get(), SoundSource.PLAYERS);
-            player.displayClientMessage(Component.literal("Selected block_items: " + selected_block), true);
+            player.displayClientMessage(Component.literal("Selected block: " + selected_block), true);
 
             return InteractionResult.SUCCESS;
         }
@@ -94,7 +118,7 @@ public class OmnispexItem extends Item {
         if (stack.getTag() == null) {
             stack.getOrCreateTag().putBoolean(POWER, false);
             stack.getOrCreateTag().putInt(ANIMATION_FRAME, 0);
-            stack.getOrCreateTag().putDouble(DISTANCE, 0);
+            stack.getOrCreateTag().putDouble(DISTANCE, -1);
             stack.getOrCreateTag().putString(SELECTED_BLOCK, "");
         }
     }
@@ -102,7 +126,7 @@ public class OmnispexItem extends Item {
     private void createPing(ItemStack stack, Level level, BlockPos pos) {
         if (level instanceof ServerLevel) {
             double distance = stack.getTag().getDouble(DISTANCE);
-            float pitch = distance == 0 ? 1.0f : Mth.lerp(1.0f - ((float) distance / maxDistance), 0.2f, 2.0f);
+            float pitch = distance == -1 ? 1.0f : Mth.lerp(1.0f - ((float) distance / maxDistance), 0.1f, 2.0f);
 
             level.playSound(null, pos, SoundInit.OMNISPEX_PING.get(), SoundSource.PLAYERS, 1, pitch);
 
@@ -140,32 +164,27 @@ public class OmnispexItem extends Item {
     public void searchManager(ItemStack stack, Level level, Player player) {
         if (level instanceof ServerLevel) {
             double distance = stack.getTag().getDouble(DISTANCE);
-            if (distance == 0) {
-                if (searchTicker >= 60) {
-                    BlockPos startPos = BlockPos.containing(player.getX(), player.getY(), player.getZ());
-                    AABB searchArea = new AABB(startPos).inflate(maxDistance / 2f);
+            double delay = distance == -1 ? 60 : Mth.lerp(1.0 - (distance / maxDistance), 60, 3);
 
-                    searchTargetBlock(stack, level, startPos, searchArea);
-                    searchTicker = 0;
-                } else {
-                    searchTicker++;
+            if (searchTicker >= delay) {
+                BlockPos startPos = BlockPos.containing(player.getX(), player.getY(), player.getZ());
+                AABB searchArea = new AABB(startPos).inflate(maxDistance);
+
+                searchTargetBlock(stack, level, startPos, searchArea);
+
+                if (stack.getTag().getInt(DISTANCE) != -1) {
+                    createPing(stack, level, startPos);
                 }
+                searchTicker = 0;
             } else {
-                if (searchTicker >= Mth.lerp(1.0 - (distance / maxDistance), 60, 3)) {
-                    BlockPos startPos = BlockPos.containing(player.getX(), player.getY(), player.getZ());
-                    AABB searchArea = new AABB(startPos).inflate(maxDistance / 2f);
-
-                    searchTargetBlock(stack, level, startPos, searchArea);
-                    searchTicker = 0;
-                } else {
-                    searchTicker++;
-                }
+                searchTicker++;
             }
         }
     }
 
     public void searchTargetBlock(ItemStack stack, Level level, BlockPos startPos, AABB searchArea) {
         Block selectedBlock = BuiltInRegistries.BLOCK.get(ResourceLocation.parse(stack.getTag().getString(SELECTED_BLOCK)));
+
         BlockPos minPos = new BlockPos(
                 Mth.floor(searchArea.minX),
                 Mth.floor(searchArea.minY),
@@ -184,13 +203,9 @@ public class OmnispexItem extends Item {
             }
         }
 
-        foundBlocks.sort(Comparator.comparingDouble(pos -> pos.distSqr(startPos)));
+        foundBlocks.sort(Comparator.comparingDouble(pos -> pos.getCenter().distanceTo(startPos.getCenter())));
 
-        stack.getTag().putDouble(DISTANCE, foundBlocks.isEmpty() ? 0 : foundBlocks.get(0).getCenter().distanceTo(startPos.getCenter()));
-
-        if (stack.getTag().getInt(DISTANCE) != 0) {
-            createPing(stack, level, startPos);
-        }
+        stack.getTag().putDouble(DISTANCE, foundBlocks.isEmpty() ? -1 : foundBlocks.get(0).getCenter().distanceTo(startPos.getCenter()));
     }
 
     //This is a fucking clusterfuck man
